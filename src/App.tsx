@@ -34,11 +34,7 @@ function App() {
     console.log(user);
   }, [user]);
   return (
-    <div className="App">
-      <label className="switch">
-      <input type="checkbox"/>
-      <span className="slider round"></span>
-      </label>
+    <div className="App">      
       <header>
         <img src={logo} className="App-logo" alt="logo" width={100} />
       </header>

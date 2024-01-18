@@ -48,10 +48,10 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="d-none d-xl-block">
-        <a className="btn border-light text-light mx-4" href="/giris">
+        <a className="btn2 border-light text-light mx-4" href="/giris">
           Giriş Yap
         </a>
-        <a className="btn mx-4 btn-rainbow" href="/kayit-ol">
+        <a className="btn2 mx-4 btn-rainbow" href="/kayit-ol">
           Ücretsiz Üye Ol
         </a>
       </div>

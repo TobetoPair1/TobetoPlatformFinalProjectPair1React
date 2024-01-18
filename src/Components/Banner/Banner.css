@@ -1,0 +1,65 @@
+.banner {
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #1e0f41; /* Navbar arkaplan rengi */
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: -webkit-fill-available;
+    top: 0;
+    left: 0;
+    z-index: 24;
+  }
+  
+  .sol-resim {
+    display: flex;
+    width: 200px;
+    height: 42px;
+    margin-left: 350px;
+}
+  
+  .ortala {
+    display: flex;
+    align-items: center;
+  }
+  
+  .orta-metin {
+    font-size: 24px;
+    color: #ffffff;
+    margin-right: 20px;
+    font-weight: 700!important;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .basvur-buton {
+    background: #00b078;
+    border: 3px solid #00b078;
+    border-radius: 2em;
+    padding: .5em 2em;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e0f41;
+    line-height: 18px;
+    min-width: 140px;
+    margin-right: 350px;
+    font-family: Poppins, sans-serif;
+    outline: none;
+    outline-width: 0;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    text-rendering: auto;
+  }
+
+  .tırnak{
+    color: rgb(0, 176, 120);
+  }
+
+  @media screen and (min-width: 768px) {
+    .navbar {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+    }
+  }

@@ -58,9 +58,6 @@ button {
   background-color: rgba(153, 51, 255, 255);
   border-style: none;
 }
-button:hover{
-  background-color: rgb(108, 28, 187);
-}
 .regis {
   margin-top: 2rem;
   font-size: 15pt;

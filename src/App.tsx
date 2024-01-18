@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { LoginModel } from "./Models/Requests/LoginModel";
 import AuthService from "./Services/AuthService";
 import { UserModel } from "./Models/Responses/UserModel";
-import { log } from "console";
+import Banner from "./Components/Banner/Banner";
+import Navbar from "./Components/NavbarDark/NavbarDark";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   // useEffect(()=>{
@@ -34,7 +36,12 @@ function App() {
     console.log(user);
   }, [user]);
   return (
-    <div className="App">      
+    <div className="App">
+    <div>
+    <Banner/> 
+    <Navbar/>
+    <Footer/>
+    </div>   
       <header>
         <img src={logo} className="App-logo" alt="logo" width={100} />
       </header>

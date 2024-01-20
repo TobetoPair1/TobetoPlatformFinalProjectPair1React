@@ -1,65 +1,205 @@
-.banner {
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #1e0f41; /* Navbar arkaplan rengi */
-    min-height: 72px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    width: -webkit-fill-available;
-    top: 0;
-    left: 0;
-    z-index: 24;
-  }
-  
-  .sol-resim {
-    display: flex;
-    width: 200px;
-    height: 42px;
-    margin-left: 350px;
+/*! CSS Used from: https://tobeto.com/_next/static/css/446e840b31078fae.css */
+* {
+  box-sizing: border-box;
 }
-  
-  .ortala {
+button {
+  outline: none;
+  outline-width: 0;
+}
+.container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+button {
+  border-radius: 0;
+}
+button:focus:not(:focus-visible) {
+  outline: 0;
+}
+button {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+button {
+  text-transform: none;
+}
+button {
+  -webkit-appearance: button;
+}
+button:not(:disabled) {
+  cursor: pointer;
+}
+.container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+.fw-bold {
+  font-weight: 700 !important;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 3px;
+}
+::-webkit-scrollbar-button {
+  width: 10px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #828282;
+  border: 0 #fff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-thumb:hover {
+  background: #93f;
+}
+::-webkit-scrollbar-track {
+  background: #e3e3e3;
+  border: 0 #fff;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #e3e3e3;
+}
+::-webkit-scrollbar-track:active {
+  background: #828282;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.mobile-none {
+  display: block;
+}
+@media screen and (max-width: 1000px) {
+  .mobile-none {
+    display: none;
+  }
+}
+.text-ik {
+  color: #fff;
+  font-size: 1.5em;
+}
+.ik-logo,
+.ik-logo:after {
+  align-items: center;
+}
+.ik-logo:after {
+  content: "";
+  background-image: url(https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg);
+  display: flex;
+  width: 200px;
+  height: 42px;
+  background-size: 200px 42px;
+}
+.ik-btn {
+  line-height: 18px;
+  min-width: 140px;
+}
+.ik-btn,
+.ik-btn:hover {
+  background: #00b078;
+  border: 3px solid #00b078;
+  border-radius: 2em;
+  padding: 0.5em 2em;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e0f41;
+}
+.ik-banner {
+  background: #1e0f41;
+  background-size: cover;
+}
+.ik-banner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: -webkit-fill-available;
+  top: 0;
+  left: 0;
+  z-index: 24;
+}
+.ik-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 1em;
+}
+@media only screen and (max-width: 762px) {
+  .ik-banner-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1em;
+  }
+  .ik-banner-top .ik-logo {
+    height: 62px;
     display: flex;
     align-items: center;
   }
-  
-  .orta-metin {
-    font-size: 24px;
-    color: #ffffff;
-    margin-right: 20px;
-    font-weight: 700!important;
-    font-family: Poppins, sans-serif;
+  .ik-banner-top .text-ik {
+    height: 56px;
+    display: flex;
+    font-size: 1em;
+    align-items: center;
   }
-  
-  .basvur-buton {
-    background: #00b078;
-    border: 3px solid #00b078;
-    border-radius: 2em;
-    padding: .5em 2em;
-    font-size: 14px;
-    font-weight: bold;
-    color: #1e0f41;
-    line-height: 18px;
-    min-width: 140px;
-    margin-right: 350px;
-    font-family: Poppins, sans-serif;
-    outline: none;
-    outline-width: 0;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    text-rendering: auto;
-  }
-
-  .tırnak{
-    color: rgb(0, 176, 120);
-  }
-
-  @media screen and (min-width: 768px) {
-    .navbar {
-      grid-template-columns: repeat(3, 1fr);
-      align-items: start;
-    }
-  }
+}

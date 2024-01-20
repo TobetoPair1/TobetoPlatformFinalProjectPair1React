@@ -1,13 +1,17 @@
 import './Banner.css';
 
-const Navbar = () => {
-  return (
-    <div className="banner">
-      <img src="https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg" alt="İstanbul Kodluyor" className="sol-resim" />
-      <div className="orta-metin">Aradığın <span className='tırnak'>"</span>İş<span className='tırnak'>"</span> Burada!</div>
-      <button className="basvur-buton">Başvur</button>
-    </div>
-  );
-}
+const Banner = () => {
+      return (
+        <div className="ik-banner">
+          <div className="container">
+            <div className="ik-banner-top">
+              <div className='logo'><span className="ik-logo" /></div>
+              <div className="mobile-none"><span className="text-ik fw-bold">Aradığın <span style={{color: 'rgb(0, 176, 120)'}}>&nbsp;"</span>İş<span style={{color: 'rgb(0, 176, 120)'}}>"&nbsp;</span> Burada!</span></div>
+              <div className='basvuru'><button className="ik-btn">Başvur</button></div>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
-export default Navbar;
+    export default Banner;

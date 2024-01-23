@@ -1,6 +1,6 @@
 import './ForPeople.css';
 
-const ForPeople = () => (
+const ForPeoplePage = () => (
   <div id='__next'>
     <div
       className='bg-front-dark bg-front-width'
@@ -969,4 +969,4 @@ const ForPeople = () => (
   </div>
 );
 
-export default ForPeople;
+export default ForPeoplePage;

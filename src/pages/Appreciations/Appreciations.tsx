@@ -20,7 +20,7 @@ const Appreciations = () => {
       <div className="row">
         <div className="col-12 col-md-12 mb-8">
           <div className="dashboard-card"><span>Tobeto İşte Başarı Modeli</span>
-            <p>80 soru ile yetkinliklerini <b>ölç,</b> önerilen eğitimleri <b>tamamla,</b> rozetini <b>kazan.</b></p><a className="btn btn-primary " href="#">Raporu Görüntüle</a>
+            <p>80 soru ile yetkinliklerini <b>ölç,</b> önerilen eğitimleri <b>tamamla,</b> rozetini <b>kazan.</b></p><a style={{backgroundColor:'#A628FF', border:'none', borderRadius:'30px'}}className="btn btn-primary " href="#">Raporu Görüntüle</a>
           </div>
         </div>
         <div className="col-12 col-md-6 mb-8 d-none">
@@ -39,27 +39,27 @@ const Appreciations = () => {
           <div className=" dashboard-card-slim">
               <div className="d-flex align-items-center" style={{gap: '14px'}}>
                 <div className="platformIcon" /><span>Front End</span>
-              </div><button className="btn btn-light">Başla</button>
+              </div><button style={{borderRadius:'20px'}} className="btn btn-light"><b>Başla</b></button>
             </div>
             <div className=" dashboard-card-slim">
               <div className="d-flex align-items-center" style={{gap: '14px'}}>
                 <div className="platformIcon" /><span>Full Stack</span>
-              </div><button className="btn btn-light">Başla</button>
+              </div><button style={{borderRadius:'20px'}} className="btn btn-light"><b>Başla</b></button>
             </div>
             <div className=" dashboard-card-slim">
               <div className="d-flex align-items-center" style={{gap: '14px'}}>
                 <div className="platformIcon" /><span>Back End</span>
-              </div><button className="btn btn-light">Başla</button>
+              </div><button style={{borderRadius:'20px'}} className="btn btn-light"><b>Başla</b></button>
             </div>
             <div className=" dashboard-card-slim">
               <div className="d-flex align-items-center" style={{gap: '14px'}}>
                 <div className="platformIcon" /><span>Microsoft SQL Server</span>
-              </div><button className="btn btn-light">Başla</button>
+              </div><button style={{borderRadius:'20px'}} className="btn btn-light"><b>Başla</b></button>
             </div>
             <div className=" dashboard-card-slim">
               <div className="d-flex align-items-center" style={{gap: '14px'}}>
                 <div className="platformIcon" /><span>Masaüstü Programlama</span>
-              </div><button className="btn btn-light">Başla</button>
+              </div><button style={{borderRadius:'20px'}} className="btn btn-light"><b>Başla</b></button>
             </div>
           </div>
         </div>

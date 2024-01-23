@@ -1,11 +1,13 @@
 import "../NavbarDark/NavbarDark.css";
 
+import { Link } from "react-router-dom";
+
 const NavbarDark = () => {
   return (
           <section className="web-header">
             <nav className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 py-5">
               <div className="container-fluid">
-                <a href="#">
+                <Link to="#">
                   <span
                     style={{
                       boxSizing: "border-box",
@@ -76,7 +78,7 @@ const NavbarDark = () => {
                       }}
                     />
                   </span>
-                </a>
+                </Link>
                 <button
                   className="btn p-0 d-xl-none "
                   type="button"
@@ -101,84 +103,84 @@ const NavbarDark = () => {
                 </button>
                 <ul className="d-none d-xl-flex flex-row justify-content-center navbar-nav">
                   <li className="nav-item">
-                    <a className="nav-link " href="/hakkimizda">
+                    <Link className="nav-link " to={"/hakkimizda"}>
                       Biz Kimiz?
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item dropdown tbt-dropdown">
-                    <a
+                    <Link
                       className="nav-link tnav-link "
-                      href="#"
+                      to="#"
                       role="button"
                       data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                      aria-expanded="false"                      
                     >
                       Neler Sunuyoruz?
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dd-bg w-100">
                       <li className="nav-item">
-                        <a className="m-0 nav-link " href="/bireyler-icin">
+                        <Link className="m-0 nav-link " to="/bireyler-icin">
                           Bireyler için
-                        </a>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <a className="m-0 nav-link " href="/kurumlar-icin">
+                        <Link className="m-0 nav-link " to="/kurumlar-icin">
                           Kurumlar için
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link " href="/katalog">
+                    <Link className="nav-link " to="/katalog">
                       Katalog
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link " href="/codecademy">
+                    <Link className="nav-link " to="/codecademy">
                       Codecademy
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item dropdown tbt-dropdown">
-                    <a
+                    <Link
                       className="nav-link tnav-link "
-                      href="#"
+                      to="#"
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Tobeto'da Bu Ay
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu dd-bg w-100">
                       <li className="nav-item">
-                        <a className="m-0 nav-link " href="/blog">
+                        <Link className="m-0 nav-link " to="/blog">
                           Blog
-                        </a>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <a className="m-0 nav-link " href="/basinda-biz">
+                        <Link className="m-0 nav-link " to="/basinda-biz">
                           Basında Biz
-                        </a>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <a className="m-0 nav-link " href="/takvim-anasayfa">
+                        <Link className="m-0 nav-link " to="/takvim-anasayfa">
                           Takvim
-                        </a>
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <a className="m-0 nav-link " href="/istanbul-kodluyor">
+                        <Link className="m-0 nav-link " to="/istanbul-kodluyor">
                           İstanbul Kodluyor
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
                 </ul>
                 <div className="d-none d-xl-block">
-                  <a className="btn border-light text-light mx-4" href="/giris">
+                  <Link className="btn border-light text-light mx-4" to="/giris">
                     Giriş Yap
-                  </a>
-                  <a className="btn mx-4 btn-rainbow" href="/kayit-ol">
+                  </Link>
+                  <Link className="btn mx-4 btn-rainbow" to="/kayit-ol">
                     Ücretsiz Üye Ol
-                  </a>
+                  </Link>
                 </div>
               </div>
             </nav>
@@ -189,7 +191,7 @@ const NavbarDark = () => {
               aria-labelledby="offcanvasExampleLabel"
             >
               <div className="offcanvas-header">
-                <a className="me-auto navbar-brand" href="#">
+                <Link className="me-auto navbar-brand" to="#">
                   <span
                     style={{
                       boxSizing: "border-box",
@@ -260,7 +262,7 @@ const NavbarDark = () => {
                       }}
                     />
                   </span>
-                </a>
+                </Link>
                 <button
                   type="button"
                   className="btn-close"
@@ -272,14 +274,14 @@ const NavbarDark = () => {
                 <div>
                   <ul className="nav flex-column">
                     <li className="nav-item">
-                      <a className="nav-link " href="/hakkimizda">
+                      <Link className="nav-link " to="/hakkimizda">
                         Biz Kimiz?
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item dropdown tbt-dropdown">
-                      <a
+                      <Link
                         className="nav-link tnav-link "
-                        href="#"
+                        to="#"
                         role="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#collapseNav1"
@@ -287,39 +289,39 @@ const NavbarDark = () => {
                         aria-controls="collapseNav1"
                       >
                         Neler Sunuyoruz?
-                      </a>
+                      </Link>
                       <div
                         id="collapseNav1"
                         className="collapse collapse-navbar"
                       >
                         <ul className=" collapse-nav-bg ">
                           <li className="nav-item">
-                            <a className="m-0 nav-link " href="/bireyler-icin">
+                            <Link className="m-0 nav-link " to="/bireyler-icin">
                               Bireyler için
-                            </a>
+                            </Link>
                           </li>
                           <li className="nav-item">
-                            <a className="m-0 nav-link " href="/kurumlar-icin">
+                            <Link className="m-0 nav-link " to="/kurumlar-icin">
                               Kurumlar için
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/katalog">
+                      <Link className="nav-link" to="/katalog">
                         Katalog
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link " href="/codecademy">
+                      <Link className="nav-link " to="/codecademy">
                         Codecademy
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item dropdown tbt-dropdown">
-                      <a
+                      <Link
                         className="nav-link tnav-link "
-                        href="#"
+                        to="#"
                         role="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#collapseNav2"
@@ -327,37 +329,37 @@ const NavbarDark = () => {
                         aria-controls="collapseNav2"
                       >
                         Tobeto'da Bu Ay
-                      </a>
+                      </Link>
                       <div
                         id="collapseNav2"
                         className="collapse collapse-navbar"
                       >
                         <ul className="collapse-nav-bg">
                           <li className="nav-item">
-                            <a className="m-0 nav-link " href="/blog">
+                            <Link className="m-0 nav-link " to="/blog">
                               Blog
-                            </a>
+                            </Link>
                           </li>
                           <li className="nav-item">
-                            <a className="m-0 nav-link" href="/basinda-biz">
+                            <Link className="m-0 nav-link" to="/basinda-biz">
                               Basında Biz
-                            </a>
+                            </Link>
                           </li>
                           <li className="nav-item">
-                            <a
+                            <Link
                               className="m-0 nav-link "
-                              href="/takvim-anasayfa"
+                              to="/takvim-anasayfa"
                             >
                               Takvim
-                            </a>
+                            </Link>
                           </li>
                           <li className="nav-item">
-                            <a
+                            <Link
                               className="m-0 nav-link "
-                              href="/istanbul-kodluyor"
+                              to="/istanbul-kodluyor"
                             >
                               İstanbul Kodluyor
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -366,15 +368,15 @@ const NavbarDark = () => {
                 </div>
                 <div className="mt-auto">
                   <div className="py-6">
-                    <a className="w-100 btn btn-dark" href="#">
+                    <Link className="w-100 btn btn-dark" to="#">
                       Giriş Yap
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       className="w-100 btn btn-primary mt-3 btn-rainbow"
-                      href="#"
+                      to="#"
                     >
                       Ücretsiz Üye Ol
-                    </a>
+                    </Link>
                   </div>
                   <p className="mb-4 small text-center text-muted">
                     © 2021 Tüm hakları saklıdır.

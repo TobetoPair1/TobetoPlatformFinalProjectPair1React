@@ -1,5 +1,5 @@
-import CourseCart from '../../CourseCart/CourseCart';
-import Filter from '../../Filter/Filter';
+import CourseCart from '../../Components/CourseCart/CourseCart';
+import Filter from '../../Components/Filter/Filter';
 import './Catalog.css';
 
 type Props = {}

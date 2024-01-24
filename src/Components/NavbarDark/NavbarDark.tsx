@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const NavbarDark = () => {
   return (
           <section className="web-header">
-            <nav className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 py-5">
+            <nav className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 ">
               <div className="container-fluid">
                 <Link to="#">
                   <span

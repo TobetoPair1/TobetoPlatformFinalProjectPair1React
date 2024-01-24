@@ -8,12 +8,12 @@ const Platform = (props: Props) => {
       <main>
         <div className="plaform-page" style={{minHeight: '120vh'}}>
           <section className="py-5">
-            <div className="position-relative mt-12">
+            <div className="position-relative mt-1">
               <div className="vector"><span style={{boxSizing: 'border-box', display: 'inline-block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', position: 'relative', maxWidth: '100%'}}><span style={{boxSizing: 'border-box', display: 'block', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', maxWidth: '100%'}}><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27150%27%20height=%27150%27/%3e" style={{display: 'block', maxWidth: '100%', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px'}} /></span><img alt="" src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg" decoding="async" data-nimg="intrinsic" srcSet="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg  1x,https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg  2x" style={{position: 'absolute', inset: '0px', boxSizing: 'border-box', padding: '0px', border: 'none', margin: 'auto', display: 'block', width: '0px', height: '0px', minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%'}} /></span></div>
               <div className="container text-center">
                 <div className="mw-5xl mx-auto">
-                  <h3><span className="text-secondary"> TOBETO</span><span className="fw-normal text-info">'ya</span> <span className="fw-normal text-info"> hoş geldin</span></h3>
-                  <h4 className="fw-normal text-info mb-5">Name</h4>
+                  <h3><span style={{color:'#a3f', fontSize:'38px'}}><b>TOBETO</b></span><span className="fw-normal" style={{color:'#555', fontSize:'36px'}}>'ya</span> <span className="fw-normal" style={{color:'#555', fontSize:'36px'}}> hoş geldin</span></h3>
+                  <h4 className="fw-normal mb-5"style={{color:'#555', fontSize:'36px'}}>Name</h4>
                   <p className="tobeto-slogan">Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!</p>
                 </div>
               </div>
@@ -260,20 +260,20 @@ const Platform = (props: Props) => {
           </section>
           <section className="my-2">
             <div className="container">
-              <div className="new-packs my-10">
+              <div className="new-packs my-20">
                 <div className="package-card">
                   <div className="details pack-bg-2">
-                    <h1><br /> Profilini oluştur </h1><button className="btn btn-primary w-100 ">Başla</button>
+                    <h1><br /> Profilini oluştur </h1><button className="btn btn-primary w-100 " style={{backgroundColor:'#a3f', border:'none', borderRadius:'30px'}}><b>Başla</b></button>
                   </div>
                 </div>
                 <div className="package-card">
                   <div className="details pack-bg-3">
-                    <h1 className="mb-6"><br /> Kendini değerlendir </h1><button className="btn btn-primary w-100 ">Başla</button>
+                    <h1 className="mb-6"><br /> Kendini değerlendir </h1><button className="btn btn-primary w-100 "style={{backgroundColor:'#a3f', border:'none', borderRadius:'30px'}}><b>Başla</b></button>
                   </div>
                 </div>
                 <div className="package-card">
                   <div className="details pack-bg-1">
-                    <h1 className="mb-6"> <br /> Öğrenmeye başla </h1><button className="btn btn-primary w-100 ">Başla</button>
+                    <h1 className="mb-6"> <br /> Öğrenmeye başla </h1><button className="btn btn-primary w-100 "style={{backgroundColor:'#a3f', border:'none', borderRadius:'30px'}}><b>Başla</b></button>
                   </div>
                 </div>
               </div>

@@ -27,7 +27,7 @@ const Competencies = (props: Props) => {
                 </div>
               </div>
             </div>
-          </div><button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn">Kaydet</button>
+          </div><button className="btn btn-primary py-2 mb-3 d-inline-block mobil-btn"style={{backgroundColor:'#a3f', borderRadius:'38px',border:'none'}}><b>Kaydet</b></button>
           <div className="col-12" />
         </div>
       </div>

@@ -6,13 +6,19 @@ const getInitialState = () => {
 
 	return {isAuthenticated: false};
 };
+export interface StateModel{
+	auth:{
+		isAuthenticated:boolean
+	}
+}
 
 const authSlice = createSlice({
 	name: "auth",
 	initialState: getInitialState(),
 	reducers: {
-		login: state => {
-			state.isAuthenticated=true;
+		login: (state) => {
+			 state.isAuthenticated=tokenService.hasToken();
+			 state.isAuthenticated=true;
 		},
 	},
 });

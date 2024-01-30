@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { error, log } from 'console';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:38106/api/',
@@ -15,8 +14,7 @@ axiosInstance.interceptors.response.use(
     // response succes işlemleri
     return value;
   },
-  (error) => {
-    toastr.error(error);
+  (error) => {    
     return error;
   }
 );

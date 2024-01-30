@@ -10,40 +10,13 @@ import { OverlayLoader } from "./Components/OverlayLoader/OverlayLoader";
 import NavBarLight from "./Components/NavbarLight/NavBarLight";
 import DarkRoute from "./Components/Routes/DarkRoute";
 import LightRoute from "./Components/Routes/LightRoute";
+import './/../node_modules/toastr/build/toastr.css';
+
+
 function App() {
   const path = useLocation().pathname;
-  // useEffect(()=>{
-  //   console.log(CheckUser("eposta","şifre").then(result=>result.data.items));
-  // },[]);
-  const [login, setLogin] = useState<LoginModel>({ email: '', password: '' });
-  const [user, setUser] = useState<UserModel>();
-
-  const [backgroundColor, setBackgroundColor] = useState('rgba(153, 51, 255, 255)');
-
-  function OnChangeInput(input: any) {
-    const { name, value } = input.target;
-    setLogin({ ...login, [name]: value })
-  }
-
-  async function Login(loginRequest: LoginModel) {
-    try {
-      let result = await AuthService.login(loginRequest);
-      setUser(result.data);
-    }
-    catch (error) {
-      console.log('Hata= ', error);
-    }
-  }
-  useEffect(() => {
-    console.log("Doğrulanan Kullanıcı");
-    console.log(user);
-  }, [user]);
   return (
     <>
-      {/* {
-        path != "/platform" ? <><Banner /><NavbarDark /></> : <NavBarLight />
-      } */}
-
 {
         path != "/istanbul-kodluyor"?
         path != "/platform"? 

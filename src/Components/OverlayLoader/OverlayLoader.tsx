@@ -9,10 +9,10 @@ export const OverlayLoader = (props: Props) => {
 	return (
 		<>
 			{loadingState.requestCount > 0 && (
-				<div className="overlay">
-					<div className="overlay__inner">
-						<div className="overlay__content">
-							<img className="spinner" src="/assets/images/tobeto.png" />
+				<div className="myoverlay">
+					<div className="myoverlay__inner">
+						<div className="myoverlay__content">
+							<img className="myspinner" src="/assets/images/tobeto.png" />
 						</div>
 					</div>
 				</div>

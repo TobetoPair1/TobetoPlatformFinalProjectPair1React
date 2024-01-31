@@ -1,4 +1,4 @@
-import { TokenModel } from '../../Models/Responses/TokenModel';
+import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 import './Platform.css'
 import { Link,} from 'react-router-dom'
 

@@ -1,9 +1,8 @@
-import axios, { AxiosResponse } from 'axios';
-import { UserModel } from '../Models/Responses/UserModel';
-import { LoginModel } from '../Models/Requests/LoginModel';
-import { RegisterModel } from '../Models/Requests/RegisterModel';
-import axiosInstance from '../utilities/interceptors/axiosInterceptors';
-import { TokenModel } from '../Models/Responses/TokenModel';
+import { AxiosResponse } from 'axios';
+import { LoginModel } from '../Models/Requests/Auth/LoginModel';
+import { RegisterModel } from '../Models/Requests/Auth/RegisterModel';
+import { TokenModel } from '../Models/Responses/Token/TokenModel';
+import axiosInstance from '../core/interceptors/axiosInceptor';
 
 const login = 'Auths/login';
 const register = 'Auths/register';

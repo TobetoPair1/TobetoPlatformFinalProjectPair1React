@@ -12,6 +12,7 @@ import ForCorpPage from '../../pages/Offer/ForCorpPage'
 import IK from '../../pages/IK/IK'
 import Gallery from '../../pages/Gallery/Gallery'
 import Footer from "../Footer/Footer";
+import { OverlayLoader } from "../OverlayLoader/OverlayLoader";
 
 type Props = {}
 

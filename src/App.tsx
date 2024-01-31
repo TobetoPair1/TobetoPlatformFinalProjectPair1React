@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-import { LoginModel } from "./Models/Requests/LoginModel";
-import AuthService from "./Services/AuthService";
-import { UserModel } from "./Models/Responses/UserModel";
-import { Route, Routes, useHref, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Banner from "./Components/Banner/Banner";
 import NavbarDark from "./Components/NavbarDark/NavbarDark";
 import './App.css'
@@ -25,8 +21,7 @@ function App() {
          :null
 
       }
-
-      <OverlayLoader />
+      <OverlayLoader/>
       {path != "/platform" ? <DarkRoute/>
         : <LightRoute/>
       }

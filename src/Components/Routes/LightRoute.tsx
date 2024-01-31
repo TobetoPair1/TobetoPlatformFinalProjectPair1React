@@ -12,11 +12,12 @@ import ForCorpPage from '../../pages/Offer/ForCorpPage'
 import IK from '../../pages/IK/IK'
 import Gallery from '../../pages/Gallery/Gallery'
 import FooterPlatform from "../FooterPlatform/FooterPlatform";
+import { OverlayLoader } from "../OverlayLoader/OverlayLoader";
 type Props = {}
 
 const LightRoute = (props: Props) => {
   return (
-    <div className="back-white" style={{ width: '100%', height: '0.5rem', overflow: 'visible' }}>
+    <div className="back-white" style={{ width: '100%', height: '0.5rem', overflow: 'visible' }}>      
           <Routes>
           <Route path="/" element={<LoginPage />}></Route>
             <Route path="/hakkimizda" element={<AboutUs />}></Route>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { UserModel } from '../../Models/Responses/UserModel'
+import { UserModel } from '../../Models/Responses/User/UserModel'
 
 type Props = {
   //data:UserModel

@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
+import { UserModel } from '../../Models/Responses/User/UserModel';
+import UserService from '../../Services/UserService';
 import './Platform.css'
 import { Link,} from 'react-router-dom'
 
@@ -6,9 +9,14 @@ type Props = {
 }
 
 const Platform = (props: Props) => {
-  const storageToken=localStorage.getItem("token");
+  const [user,setUser]=useState<UserModel>();
+
+  useEffect(()=>{
+    const storageToken=localStorage.getItem("token");
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");
+  UserService.getByMail(token.email).then(result=>setUser(result.data));
   console.log(token);//token süresi bitince kaldır , email ile kullanıcı bilgilerini getir.
+  },[])
   return (
       <main>
         <div className="plaform-page" style={{minHeight: '120vh'}}>
@@ -18,7 +26,7 @@ const Platform = (props: Props) => {
               <div className="container text-center">
                 <div className="mw-5xl mx-auto">
                   <h3><span style={{color:'#a3f', fontSize:'38px'}}><b>TOBETO</b></span><span className="fw-normal" style={{color:'#555', fontSize:'36px'}}>'ya</span> <span className="fw-normal" style={{color:'#555', fontSize:'36px'}}> hoş geldin</span></h3>
-                  <h4 className="fw-normal mb-5"style={{color:'#555', fontSize:'36px'}}>{token.email}</h4>
+                  <h4 className="fw-normal mb-5"style={{color:'#555', fontSize:'36px'}}>{user?.firstName}</h4>
                   <p className="tobeto-slogan">Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!</p>
                 </div>
               </div>

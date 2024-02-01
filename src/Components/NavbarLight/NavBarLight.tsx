@@ -1,11 +1,22 @@
 import { Link } from 'react-router-dom'
 import { UserModel } from '../../Models/Responses/User/UserModel'
+import { useEffect, useState } from 'react';
+import UserService from '../../Services/UserService';
+import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 
 type Props = {
   //data:UserModel
 }
 
 const NavBarLight = (props: Props) => {
+  const [user,setUser]=useState<UserModel>();
+
+  useEffect(()=>{
+    const storageToken=localStorage.getItem("token");
+  const token:TokenModel=JSON.parse(storageToken?storageToken:"");
+  UserService.getByMail(token.email).then(result=>setUser(result.data));
+  console.log(token);//token süresi bitince kaldır , email ile kullanıcı bilgilerini getir.
+  },[])
   return (
     <nav className="position-relative navbar navbar-expand-xxl py-2 bg-white">
         <div className="container-fluid"><Link to="#"><span style={{boxSizing: 'border-box', display: 'inline-block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', position: 'relative', maxWidth: '100%'}}><span style={{boxSizing: 'border-box', display: 'block', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', maxWidth: '100%'}}><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27170%27%20height=%2735%27/%3e" style={{display: 'block', maxWidth: '100%', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px'}} /></span><img alt="" src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=384&q=75" decoding="async" data-nimg="intrinsic" srcSet="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=256&q=75  1x,https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=384&q=75  2x" style={{position: 'absolute', inset: '0px', boxSizing: 'border-box', padding: '0px', border: 'none', margin: 'auto', display: 'block', width: '0px', height: '0px', minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%'}} /></span></Link><button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" className="btn p-0 d-xxl-none navbar-burger"><svg width={24} height={24} viewBox="0 0 24 24" color="gray" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +36,7 @@ const NavBarLight = (props: Props) => {
               <div className="btn-group header-avatar"><button type="button" className="btn p-0 fw-normal b-r-35 text-end d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
                   <div className="me-2"><span style={{boxSizing: 'border-box', display: 'inline-block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', position: 'relative', maxWidth: '100%'}}><span style={{boxSizing: 'border-box', display: 'block', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', maxWidth: '100%'}}><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2736%27%20height=%2736%27/%3e" style={{display: 'block', maxWidth: '100%', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px'}} /></span><img alt="" src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=96&q=75" decoding="async" data-nimg="intrinsic" className="cv-pp-img rounded-circle " srcSet="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75  1x,https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=96&q=75  2x" style={{position: 'absolute', inset: '0px', boxSizing: 'border-box', padding: '0px', border: 'none', margin: 'auto', display: 'block', width: '0px', height: '0px', minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%'}} /></span></div>
                   <div className="me-3">
-                    <p className="mb-0 name">{}</p>
+                    <p className="mb-0 name">{user?.firstName+" "+user?.lastName}</p>
                   </div><span><svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 20 20" fill="none" >
                       <path d="M6 9L12 15L18 9" stroke="#828282" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                     </svg></span>

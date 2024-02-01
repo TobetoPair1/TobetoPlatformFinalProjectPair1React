@@ -19,8 +19,8 @@ export class BaseService<
 		return axiosInstance.get<GetAllType>(this.apiUrl);
 	}
 
-	getById(id: number): Promise<AxiosResponse<GetByIdType, any>> {
-		return axiosInstance.get<GetByIdType>(this.apiUrl + "/" + id);
+	getById(id: string): Promise<AxiosResponse<GetByIdType, any>> {
+		return axiosInstance.get<GetByIdType>(this.apiUrl + "/get" ,{params:{Id:id}});
 	}
 
 	add(request: AddRequestType): Promise<AxiosResponse<AddResponseType, any>> {

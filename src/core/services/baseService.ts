@@ -1,5 +1,6 @@
 import {AxiosResponse} from "axios";
 import axiosInstance from "../interceptors/axiosInceptor";
+import { PageRequestModel } from "../../Models/Requests/PageRequestModel";
 
 export class BaseService<
 	GetAllType,
@@ -15,8 +16,8 @@ export class BaseService<
 		this.apiUrl = "";
 	}
 
-	getAll(): Promise<AxiosResponse<GetAllType, any>> {
-		return axiosInstance.get<GetAllType>(this.apiUrl);
+	getAll(pageRequest:PageRequestModel): Promise<AxiosResponse<GetAllType, any>> {
+		return axiosInstance.get<GetAllType>(this.apiUrl,{params:{...pageRequest}});
 	}
 
 	getById(id: string): Promise<AxiosResponse<GetByIdType, any>> {
@@ -34,6 +35,6 @@ export class BaseService<
 	}
 
 	delete(id: string) {
-		return axiosInstance.delete(this.apiUrl + "/" + id);
+		return axiosInstance.delete(this.apiUrl + "/",{params:{Id:id}});
 	}
 }

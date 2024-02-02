@@ -8,7 +8,7 @@ import { UserUpdateResponseModel } from '../Models/Responses/User/UserUpdateResp
 import { UserDeleteRequestModel } from '../Models/Requests/User/UserDeleteRequestModel';
 
 const apiUrl="Users"
-class CourseService{
+class UserService{
     getAll(pageRequest:PageRequestModel): Promise<AxiosResponse<Paginate<UserModel>, any>> {
 		return axiosInstance.get<Paginate<UserModel>>(apiUrl+"/GetAll",{params:{...pageRequest}});
 	}
@@ -31,4 +31,4 @@ class CourseService{
 		return axiosInstance.get<boolean>(apiUrl + "/Activate",{params:{email:email}});
 	}
 }
-export default new CourseService();
+export default new UserService();

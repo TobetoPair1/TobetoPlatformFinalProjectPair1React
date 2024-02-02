@@ -39,6 +39,7 @@ const LoginForm = (props: Props) => {
    if(token.status==HttpStatusCode.Ok){
     localStorage.setItem("token", JSON.stringify({...token.data,email:values.email}));
     navigate("/platform");
+    toastr.success("Giriş başarılı.")
    }
    else{
     toastr.error("hatalı giriş");

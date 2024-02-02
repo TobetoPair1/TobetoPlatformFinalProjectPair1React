@@ -9,6 +9,7 @@ export class BaseService<
 	AddResponseType,
 	UpdateRequestType,
 	UpdateResponseType,
+	DeleteResponseType,
 > {
 	public apiUrl: string;
 
@@ -17,7 +18,7 @@ export class BaseService<
 	}
 
 	getAll(pageRequest:PageRequestModel): Promise<AxiosResponse<GetAllType, any>> {
-		return axiosInstance.get<GetAllType>(this.apiUrl,{params:{...pageRequest}});
+		return axiosInstance.get<GetAllType>(this.apiUrl+"/getall",{params:{...pageRequest}});
 	}
 
 	getById(id: string): Promise<AxiosResponse<GetByIdType, any>> {
@@ -34,7 +35,7 @@ export class BaseService<
 		return axiosInstance.put<UpdateResponseType>(this.apiUrl, request);
 	}
 
-	delete(id: string) {
+	delete(id: string):Promise<AxiosResponse<DeleteResponseType, any>> {
 		return axiosInstance.delete(this.apiUrl + "/",{params:{Id:id}});
 	}
 }

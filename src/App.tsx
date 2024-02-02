@@ -6,8 +6,6 @@ import { OverlayLoader } from "./Components/OverlayLoader/OverlayLoader";
 import NavBarLight from "./Components/NavbarLight/NavBarLight";
 import DarkRoute from "./Components/Routes/DarkRoute";
 import LightRoute from "./Components/Routes/LightRoute";
-import './/../node_modules/toastr/build/toastr.css';
-import UserService from "./Services/UserService";
 
 
 function App() {

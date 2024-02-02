@@ -1,21 +1,31 @@
 import { useEffect, useState } from 'react';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
-import { UserModel } from '../../Models/Responses/User/UserModel';
 import UserService from '../../Services/UserService';
 import './Platform.css'
 import { Link,} from 'react-router-dom'
+import { UserGetResponseModel } from '../../Models/Responses/User/UserGetResponseModel';
+import { Paginate } from '../../core/Models/Paginate';
+import { ExamGetListResponseModel } from '../../Models/Responses/Exam/ExamGetListResponseModel';
+import ExamService from '../../Services/ExamService';
+import Exam from '../../Components/Exam/Exam';
 
 type Props = {  
 }
 
 const Platform = (props: Props) => {
-  const [user,setUser]=useState<UserModel>();
-
-  useEffect(()=>{
-    const storageToken=localStorage.getItem("token");
-  const token:TokenModel=JSON.parse(storageToken?storageToken:"");
-  UserService.getByMail(token.email).then(result=>setUser(result.data));
-  console.log(token);//token süresi bitince kaldır , email ile kullanıcı bilgilerini getir.
+  const [user,setUser]=useState<UserGetResponseModel>();
+  const [exams,setExams]=useState<Paginate<ExamGetListResponseModel>>();  
+async function OnPageLoad() {  
+  const storageToken=localStorage.getItem("token");
+  const token:TokenModel=JSON.parse(storageToken?storageToken:"");  
+  const userData:UserGetResponseModel = (await UserService.getByMail(token.email)).data;
+  const examsData:Paginate<ExamGetListResponseModel> = (await ExamService.GetListByUserId({PageIndex:0,PageSize:5},userData.id)).data
+  setUser(userData);
+  setExams(examsData);
+}
+  useEffect( ()=>{    
+    OnPageLoad();
+  
   },[])
   return (
       <main>
@@ -261,12 +271,7 @@ const Platform = (props: Props) => {
               <div className="row cv-box cv-padding">
                 <div className="col-12 position-relative"><span className="exams-header">Sınavlarım</span></div>
                 <div className="exams my-3">
-                  <div className="exam-card  ">
-                    <div className="exam-header"><span className="exam-name">Herkes için Kodlama 2A Değerlendirme Sınavı</span><span className="lesson-name">Herkes İçin Kodlama - 2A</span></div>
-                    <div className="exam-details">
-                      <div><span className="exam_time">45 Dakika</span></div>
-                    </div><span className="status-done" />
-                  </div>
+                  <Exam exams={exams as Paginate<ExamGetListResponseModel>}/>
                 </div>
               </div>
             </div>

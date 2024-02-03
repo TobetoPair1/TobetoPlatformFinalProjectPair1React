@@ -4,6 +4,7 @@ import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { Paginate } from "../core/Models/Paginate";
 import axiosInstance from "../core/interceptors/axiosInceptor";
 import { ForeignLanguageAddRequestModel } from '../Models/Requests/ForeignLanguage/ForeignLanguageAddRequestModel';
+import { ForeignLanguageGetListResponseModel } from '../Models/Responses/ForeignLanguage/ForeignLanguageGetListResponseModel';
 
 const getListByUserIdUrl="/getlistbyuserid"
 const apiUrl = "ForeignLanguages"
@@ -13,10 +14,6 @@ class ForeignLanguageService{
 	}
 	add(request: ForeignLanguageAddRequestModel): Promise<AxiosResponse<ForeignLanguageAddResponseModel, any>> {
 		return axiosInstance.post<ForeignLanguageAddResponseModel>(apiUrl, request);
-	}
-
-	delete(id: string): Promise<AxiosResponse<ForeignLanguageDeleteResponseModel, any>> {
-		return axiosInstance.delete(apiUrl + "/",{params:{Id:id}});
 	}
     GetListByUserId(pageRequest:PageRequestModel,userId:string):Promise<AxiosResponse<Paginate<ForeignLanguageGetListResponseModel>, any>>{
         return axiosInstance.get(apiUrl+getListByUserIdUrl,{params:{...pageRequest,userId}})

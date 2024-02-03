@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom'
-import { UserModel } from '../../Models/Responses/User/UserModel'
 import { useEffect, useState } from 'react';
 import UserService from '../../Services/UserService';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
+import { UserGetResponseModel } from '../../Models/Responses/User/UserGetResponseModel';
 
 type Props = {
   //data:UserModel
 }
 
 const NavBarLight = (props: Props) => {
-  const [user,setUser]=useState<UserModel>();
+  const [user,setUser]=useState<UserGetResponseModel>();
 
   useEffect(()=>{
     const storageToken=localStorage.getItem("token");
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");
   UserService.getByMail(token.email).then(result=>setUser(result.data));
-  console.log(token);//token süresi bitince kaldır , email ile kullanıcı bilgilerini getir.
   },[])
   return (
     <nav className="position-relative navbar navbar-expand-xxl py-2 bg-white">

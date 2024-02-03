@@ -1,4 +1,4 @@
-export interface CourseModel {
+export interface CourseGetResponseModel {
 	id: string;
 	categoryName: string;
 	likeCount: number;

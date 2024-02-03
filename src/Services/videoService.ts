@@ -13,7 +13,7 @@ class VideoService extends BaseService<
 	AddVideoRequest,
 	AddVideoResponse,
 	UpdateVideoRequest,
-	UpdateVideoResponse
+	UpdateVideoResponse,null
 > {
 	constructor() {
 		super();

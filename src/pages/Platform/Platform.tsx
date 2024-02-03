@@ -1,26 +1,28 @@
 import { useEffect, useState } from 'react';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
-import UserService from '../../Services/UserService';
 import './Platform.css'
 import { Link,} from 'react-router-dom'
-import { UserGetResponseModel } from '../../Models/Responses/User/UserGetResponseModel';
 import { Paginate } from '../../core/Models/Paginate';
 import { ExamGetListResponseModel } from '../../Models/Responses/Exam/ExamGetListResponseModel';
 import ExamService from '../../Services/ExamService';
 import Exam from '../../Components/Exam/Exam';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedTokenModel } from '../../core/Models/DecodedTokenModel';
 
 type Props = {  
 }
 
 const Platform = (props: Props) => {
-  const [user,setUser]=useState<UserGetResponseModel>();
+  const [name,setName]=useState("");
   const [exams,setExams]=useState<Paginate<ExamGetListResponseModel>>();  
 async function OnPageLoad() {  
   const storageToken=localStorage.getItem("token");
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");  
-  const userData:UserGetResponseModel = (await UserService.getByMail(token.email)).data;
-  const examsData:Paginate<ExamGetListResponseModel> = (await ExamService.GetListByUserId({PageIndex:0,PageSize:5},userData.id)).data
-  setUser(userData);
+  const decodedToken:DecodedTokenModel = jwtDecode(token.token)
+  const fullName=decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+  const id=decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+  const examsData:Paginate<ExamGetListResponseModel> = (await ExamService.GetListByUserId({PageIndex:0,PageSize:5},id)).data
+  setName(fullName.split(' ')[0]);
   setExams(examsData);
 }
   useEffect( ()=>{    
@@ -36,7 +38,7 @@ async function OnPageLoad() {
               <div className="container text-center">
                 <div className="mw-5xl mx-auto">
                   <h3><span style={{color:'#a3f', fontSize:'38px'}}><b>TOBETO</b></span><span className="fw-normal" style={{color:'#555', fontSize:'36px'}}>'ya</span> <span className="fw-normal" style={{color:'#555', fontSize:'36px'}}> hoş geldin</span></h3>
-                  <h4 className="fw-normal mb-5"style={{color:'#555', fontSize:'36px'}}>{user?.firstName}</h4>
+                  <h4 className="fw-normal mb-5"style={{color:'#555', fontSize:'36px'}}>{name}</h4>
                   <p className="tobeto-slogan">Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!</p>
                 </div>
               </div>

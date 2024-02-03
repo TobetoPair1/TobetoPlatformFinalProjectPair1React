@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { Paginate } from '../../core/Models/Paginate'
 import { ExamGetListResponseModel } from '../../Models/Responses/Exam/ExamGetListResponseModel'
 
@@ -7,7 +6,6 @@ type Props = {
 }
 
 function Exam(props: Props) {  
-    console.log(props.exams);  
   return (    
 <>
     {       

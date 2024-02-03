@@ -1,9 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { useNavigate } from 'react-router-dom';
-import { StateModel, authActions } from '../../store/auth/authSlice';
 import * as Yup from 'yup'
 import toastr from 'toastr';
-import { useDispatch, useSelector } from 'react-redux';
 import AuthService from '../../Services/AuthService';
 import { HttpStatusCode } from 'axios';
 
@@ -21,8 +19,6 @@ type Props = {
 
 
 const LoginForm = (props: Props) => {
-  const auth=useSelector((state:StateModel)=>state.auth.isAuthenticated);
-  const dispatch=useDispatch();
   const navigate=useNavigate();
   const initialValues = {
     email: "",
@@ -37,7 +33,7 @@ const LoginForm = (props: Props) => {
   const token= await AuthService.login({email:values.email,password:values.password})
   console.log(token);
    if(token.status==HttpStatusCode.Ok){
-    localStorage.setItem("token", JSON.stringify({...token.data,email:values.email}));
+    localStorage.setItem("token", JSON.stringify({...token.data}));
     navigate("/platform");
     toastr.success("Giriş başarılı.")
    }

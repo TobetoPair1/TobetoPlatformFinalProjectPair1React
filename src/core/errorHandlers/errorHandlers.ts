@@ -8,7 +8,6 @@ export const handleError = (error: any) => {
 
 	if (error.response && error.response.data && error.response.data.type) {
 		let type = error.response.data.type;
-
 		switch (type) {
 			case BUSINESS_ERROR:
 				handleBusinessError(error.response.data);

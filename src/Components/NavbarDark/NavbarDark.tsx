@@ -1,13 +1,14 @@
 import "../NavbarDark/NavbarDark.css";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavbarDark = () => {
+  const path=useLocation().pathname;
   return (
           <section className="web-header">
             <nav className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 ">
               <div className="container-fluid">
-                <Link to="#">
+                <Link to="/">
                   <span
                     style={{
                       boxSizing: "border-box",
@@ -103,13 +104,13 @@ const NavbarDark = () => {
                 </button>
                 <ul className="d-none d-xl-flex flex-row justify-content-center navbar-nav">
                   <li className="nav-item">
-                    <Link className="nav-link " to={"/hakkimizda"}>
+                    <Link className={"nav-link "+(path=="/hakkimizda"?"nav-active":"")} to={"/hakkimizda"}>
                       Biz Kimiz?
                     </Link>
                   </li>
                   <li className="nav-item dropdown tbt-dropdown">
                     <Link
-                      className="nav-link tnav-link "
+                      className={"nav-link tnav-link "+(path=="/bireyler-icin"||path=="/kurumlar-icin"?"nav-active":"")}
                       to="#"
                       role="button"
                       data-bs-toggle="dropdown"
@@ -131,18 +132,21 @@ const NavbarDark = () => {
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link " to="/katalog">
+                    <Link className={"nav-link "+(path=="/katalog"?"nav-active":"")} to="/katalog">
                       Katalog
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link " to="/codecademy">
+                    <Link className={"nav-link "+(path=="/codecademy"?"nav-active":"")} to="/codecademy">
                       Codecademy
                     </Link>
                   </li>
                   <li className="nav-item dropdown tbt-dropdown">
                     <Link
-                      className="nav-link tnav-link "
+                      className={"nav-link tnav-link "
+                    +
+                    (path=="/blog"||path=="/basinda-biz"||path=="/takvim-anasayfa"||path=="/istanbul-kodluyor"?"nav-active":"")
+                    }
                       to="#"
                       role="button"
                       data-bs-toggle="dropdown"

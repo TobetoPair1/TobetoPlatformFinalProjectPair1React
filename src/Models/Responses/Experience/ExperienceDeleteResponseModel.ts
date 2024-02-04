@@ -1,4 +1,4 @@
-export interface ExperianceDeleteResponseModel {
+export interface ExperienceDeleteResponseModel {
 	id: string;
 	userId: string;
 	organizationName: string;

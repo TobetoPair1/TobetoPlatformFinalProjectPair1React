@@ -1,4 +1,5 @@
-export interface ExperianceAddRequestModel {
+export interface ExperienceGetListResponseModel {
+	id: string;
 	userId: string;
 	organizationName: string;
 	position: string;

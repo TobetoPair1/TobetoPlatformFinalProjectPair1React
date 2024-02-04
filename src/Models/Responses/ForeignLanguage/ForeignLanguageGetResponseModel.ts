@@ -1,4 +1,4 @@
-export interface ForeignLanguageGetModel {
+export interface ForeignLanguageGetResponseModel {
     id: string;
     userId: string;
     name: string;

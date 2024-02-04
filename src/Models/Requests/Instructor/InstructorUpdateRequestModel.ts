@@ -1,5 +1,5 @@
 export interface InstructorUpdateRequestModel {
-    "id": "string";
-    "fullName": "string";
+    id: string;
+    fullName: string;
 }
 

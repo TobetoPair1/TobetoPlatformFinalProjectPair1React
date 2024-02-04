@@ -1,4 +1,4 @@
 export interface InstructorGetResponseModel {
-    "id": "string";
-    "fullName": "string";
+    id: string;
+    fullName: string;
 }

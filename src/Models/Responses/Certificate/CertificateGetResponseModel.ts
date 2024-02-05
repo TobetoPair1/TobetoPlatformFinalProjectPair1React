@@ -1,3 +1,7 @@
 export interface CertificateGetResponseModel {
-    //certificates: CertificateModel[];
+    id: string;
+    name: string;
+    userId: string;
+    filePath: string;
+    fileType: string;
 }

@@ -7,9 +7,10 @@ import { ExperienceAddRequestModel } from "../Models/Requests/Experience/Experie
 import { ExperienceAddResponseModel } from "../Models/Responses/Experience/ExperienceAddResponseModel";
 import { ExperienceDeleteResponseModel } from "../Models/Responses/Experience/ExperienceDeleteResponseModel";
 
+
 const getListByUserIdUrl="/getlistbyuserid"
 const apiUrl = "Experiences"
-class ExperianceService{
+class ExperienceService{
     getAll(pageRequest:PageRequestModel): Promise<AxiosResponse<Paginate<ExperienceGetListResponseModel>, any>> {
 		return axiosInstance.get<Paginate<ExperienceGetListResponseModel>>(apiUrl,{params:{...pageRequest}});
 	}
@@ -24,4 +25,4 @@ class ExperianceService{
         return axiosInstance.get(apiUrl+getListByUserIdUrl,{params:{...pageRequest,userId}})
     }
 }
-export default new ExperianceService();
+export default new ExperienceService();

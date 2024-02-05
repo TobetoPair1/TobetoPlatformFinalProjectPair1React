@@ -1,3 +1,3 @@
-export interface AnnouncementUpdateRequestModel {
+export interface AnnouncementDeleteRequestModel {
   id: string;
 }

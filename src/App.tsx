@@ -17,7 +17,9 @@ function App() {
   if(tokenService.hasToken()){
     const tokenString=tokenService.getToken();
     const exp=(jwtDecode(tokenString?tokenString:"") as DecodedTokenModel).exp;
-    if(exp<=Date.now()){
+    const dateString=Date.now().toString();
+    const now = Number.parseInt(dateString.substring(0,exp.toString().length));
+    if(exp<=now){
       tokenService.removeToken()
     }
   }

@@ -10,6 +10,7 @@ import LightRoute from "./Components/Routes/LightRoute";
 
 function App() {
   const path = useLocation().pathname;
+  document.title="Tobeto | "+path.substring(1,path.length);
   return (
     <>
 {

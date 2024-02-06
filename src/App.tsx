@@ -13,29 +13,65 @@ import { DecodedTokenModel } from "./core/Models/DecodedTokenModel";
 
 function App() {
   const path = useLocation().pathname;
-  document.title="Tobeto | "+path.substring(1,path.length);
-  if(tokenService.hasToken()){
-    const tokenString=tokenService.getToken();
-    const exp=(jwtDecode(tokenString?tokenString:"") as DecodedTokenModel).exp;
-    const dateString=Date.now().toString();
-    const now = Number.parseInt(dateString.substring(0,exp.toString().length));
-    if(exp<=now){
+  document.title = "Tobeto | " + path.substring(1, path.length);
+  if (tokenService.hasToken()) {
+    const tokenString = tokenService.getToken();
+    const exp = (jwtDecode(tokenString ? tokenString : "") as DecodedTokenModel).exp;
+    const dateString = Date.now().toString();
+    const now = Number.parseInt(dateString.substring(0, exp.toString().length));
+    console.log(exp);
+    console.log(now);
+    if (exp <= now) {
+      console.log("token sil");
       tokenService.removeToken()
     }
   }
   return (
     <>
-{
+      {
         path != "/istanbul-kodluyor"?
-        path != "/platform"? 
-        <><Banner /><NavbarDark /></>
-         : <NavBarLight />
-         :null
+          path == "/"
+            ||
+            path == "/hakkimizda"
+            ||
+            path == "/katalog"
+            ||
+            path == "/codecademy"
+            ||
+            path == "/giris"
+            ||
+            path == "/kayit-ol"
+            ||
+            path == "/sifremi-unuttum"
+            ||
+            path == "/bireyler-icin"
+            ||
+            path == "/kurumlar-icin"
+            ?
+            <><Banner /><NavbarDark /></>
+            : <NavBarLight />
+          : null
 
       }
-      <OverlayLoader/>
-      {path != "/platform" ? <DarkRoute/>
-        : <LightRoute/>
+      <OverlayLoader />
+      {path == "/"
+            ||
+            path == "/hakkimizda"
+            ||
+            path == "/katalog"
+            ||
+            path == "/codecademy"
+            ||
+            path == "/giris"
+            ||
+            path == "/kayit-ol"
+            ||
+            path == "/sifremi-unuttum"
+            ||
+            path == "/bireyler-icin"
+            ||
+            path == "/kurumlar-icin" ? <DarkRoute />
+        : <LightRoute />
       }
     </>
   );

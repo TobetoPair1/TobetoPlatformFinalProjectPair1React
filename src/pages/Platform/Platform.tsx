@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 import './Platform.css'
-import { Link,} from 'react-router-dom'
+import { Link, useNavigate,} from 'react-router-dom'
 import { Paginate } from '../../core/Models/Paginate';
 import { ExamGetListResponseModel } from '../../Models/Responses/Exam/ExamGetListResponseModel';
 import ExamService from '../../Services/ExamService';
@@ -13,10 +13,12 @@ import tokenService from '../../core/services/tokenService';
 type Props = {  
 }
 
-const Platform = (props: Props) => {
+const Platform = (props: Props) => {  
+  const navigate=useNavigate();
   const [name,setName]=useState("");
-  const [exams,setExams]=useState<Paginate<ExamGetListResponseModel>>();  
-async function OnPageLoad() {
+  const [exams,setExams]=useState<Paginate<ExamGetListResponseModel>>(); 
+  
+async function OnPageLoad() {  
   if(tokenService.hasToken()){    
   const storageToken=tokenService.getToken();
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");  
@@ -26,6 +28,9 @@ async function OnPageLoad() {
   const examsData:Paginate<ExamGetListResponseModel> = (await ExamService.GetListByUserId({PageIndex:0,PageSize:5},id)).data
   setName(fullName.split(' ')[0]);
   setExams(examsData);
+  }
+  else{
+    navigate("/giris");
   }
 }
   useEffect( ()=>{    

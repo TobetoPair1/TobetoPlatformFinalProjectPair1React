@@ -13,6 +13,9 @@ import IK from '../../pages/IK/IK'
 import Gallery from '../../pages/Gallery/Gallery'
 import Footer from "../Footer/Footer";
 import NotFound from "../../pages/NotFound/NotFound";
+import HomePage from "../../pages/HomePage/HomePage";
+import Profile from "../../pages/Profile/Profile";
+import MainRoutes from "./MainRoutes";
 
 type Props = {}
 
@@ -20,22 +23,7 @@ const DarkRoute = (props: Props) => {
   return (
     <div className="bg-front-dark bg-front-width" style={{ height: "0.5rem", overflow: "visible", width: "auto" }}>
     <main className="bg-front-dark">
-          <Routes>
-            <Route path="/" element={<LoginPage />}></Route>
-            <Route path="/hakkimizda" element={<AboutUs />}></Route>
-            <Route path="/katalog" element={<Catalog />}></Route>
-            <Route path="/codecademy" element={<Codecademy />}></Route>
-            <Route path="/giris" element={<LoginPage />}></Route>
-            <Route path="/kayit-ol" element={<Register />}></Route>
-            <Route path="/platform" element={<Platform />}></Route>
-            <Route path="/degerlendirmeler" element={<Appreciations />}></Route>
-            <Route path="/sifremi-unuttum" element={<ForgotPassword />}></Route>
-            <Route path="/bireyler-icin" element={<ForPeoplePage />}></Route>
-            <Route path="/kurumlar-icin" element={<ForCorpPage />}></Route>
-            <Route path="/istanbul-kodluyor" element={<IK />}></Route>
-            <Route path="/istanbul-kodluyor/galeri" element={<Gallery />}></Route>
-            <Route path="*" element={<NotFound/>}></Route>
-          </Routes>
+          <MainRoutes/>
         </main>
         <Footer />
     </div>

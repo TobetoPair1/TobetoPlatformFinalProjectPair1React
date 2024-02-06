@@ -10,7 +10,8 @@ type Props = {
 
 const NavBarLight = (props: Props) => {
   const [fullName,setFullName]=useState("");
-async function OnPageLoad() {  
+  const [openProfileButton,setOpenButton]=useState(false);
+async function OnPageLoad() {
   if(tokenService.hasToken()){
   const storageToken=tokenService.getToken();
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");  
@@ -18,10 +19,13 @@ async function OnPageLoad() {
   const fullName=decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
   setFullName(fullName);
   }
+  
+}
+const OnClickProfileButton=()=>{
+  setOpenButton(!openProfileButton);
 }
   useEffect( ()=>{    
-    OnPageLoad();
-  
+    OnPageLoad();  
   },[])
   return (
     <nav className="position-relative navbar navbar-expand-xxl py-2 bg-white">
@@ -29,7 +33,7 @@ async function OnPageLoad() {
               <path fillRule="evenodd" clipRule="evenodd" d="M3.5 7C3.22386 7 3 6.77614 3 6.5C3 6.22386 3.22386 6 3.5 6H20.5C20.7761 6 21 6.22386 21 6.5C21 6.77614 20.7761 7 20.5 7H3.5ZM3.5 12C3.22386 12 3 11.7761 3 11.5C3 11.2239 3.22386 11 3.5 11H20.5C20.7761 11 21 11.2239 21 11.5C21 11.7761 20.7761 12 20.5 12H3.5ZM3 16.5C3 16.7761 3.22386 17 3.5 17H20.5C20.7761 17 21 16.7761 21 16.5C21 16.2239 20.7761 16 20.5 16H3.5C3.22386 16 3 16.2239 3 16.5Z" fill="#828282" />
             </svg></button>
           <ul className="d-none d-xxl-flex navbar-nav">
-            <li className="nav-item"><Link className="nav-link nav-active" to="/">Ana Sayfa</Link></li>
+            <li className="nav-item"><Link className="nav-link nav-active" to="/platform">Ana Sayfa</Link></li>
             <li className="nav-item"><Link className="nav-link c-gray-3" to="/profilim">Profilim</Link></li>
             <li className="nav-item"><Link className="nav-link c-gray-3" to="/değerlendirmeler">Değerlendirmeler</Link></li>
             <li className="nav-item"><Link className="nav-link c-gray-3" to="/katalog">Katalog</Link></li>
@@ -39,7 +43,7 @@ async function OnPageLoad() {
           <div className="d-none d-xxl-block">
             <div className="d-flex justify-space-between align-items-center">
               <div className="mx-3 align-items-center d-flex align-items-center" style={{gap: '1em'}}><span className="tbt-gradient" /></div>
-              <div className="btn-group header-avatar"><button type="button" className="btn p-0 fw-normal b-r-35 text-end d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+              <div className="btn-group header-avatar"><button type="button" className={"btn p-0 fw-normal b-r-35 text-end d-flex align-items-center"+(openProfileButton?"show":"")} data-bs-toggle="dropdown" aria-expanded="false" onClick={OnClickProfileButton}>
                   <div className="me-2"><span style={{boxSizing: 'border-box', display: 'inline-block', overflow: 'hidden', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', position: 'relative', maxWidth: '100%'}}><span style={{boxSizing: 'border-box', display: 'block', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px', maxWidth: '100%'}}><img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2736%27%20height=%2736%27/%3e" style={{display: 'block', maxWidth: '100%', width: 'initial', height: 'initial', background: 'none', opacity: 1, border: '0px', margin: '0px', padding: '0px'}} /></span><img alt="" src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=96&q=75" decoding="async" data-nimg="intrinsic" className="cv-pp-img rounded-circle " srcSet="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75  1x,https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=96&q=75  2x" style={{position: 'absolute', inset: '0px', boxSizing: 'border-box', padding: '0px', border: 'none', margin: 'auto', display: 'block', width: '0px', height: '0px', minWidth: '100%', maxWidth: '100%', minHeight: '100%', maxHeight: '100%'}} /></span></div>
                   <div className="me-3">
                     <p className="mb-0 name">{fullName}</p>
@@ -47,7 +51,7 @@ async function OnPageLoad() {
                       <path d="M6 9L12 15L18 9" stroke="#828282" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                     </svg></span>
                 </button>
-                <ul className="profile dropdown-menu">
+                <ul className={"profile dropdown-menu"+(openProfileButton?"show":"")}>
                   <li><Link className="dropdown-item profil-dropdown" to="#">Profil Bilgileri</Link></li>
                   <li>
                     <hr className="dropdown-divider" style={{backgroundColor: 'rgb(204, 204, 204)', height: '1px'}} />

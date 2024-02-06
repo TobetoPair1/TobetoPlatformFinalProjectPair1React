@@ -1,9 +1,9 @@
 import './Profile.css';
 type Props = {}
 
-const Profile = (props: Props) => {
+const Profile = (props: Props) => {  
   return (
-    <main>
+    <>
   <div className="container" style={{minHeight: '100vh'}}>
     <div className="row " style={{marginTop: '1.5em'}}>
       <div className="d-flex justify-content-end"><span className="cv-edit-icon" />
@@ -1395,7 +1395,7 @@ const Profile = (props: Props) => {
       </div>
     </div>
   </div>
-</main>
+</>
 
   )
 }

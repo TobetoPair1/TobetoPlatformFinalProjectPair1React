@@ -19,10 +19,7 @@ function App() {
     const exp = (jwtDecode(tokenString ? tokenString : "") as DecodedTokenModel).exp;
     const dateString = Date.now().toString();
     const now = Number.parseInt(dateString.substring(0, exp.toString().length));
-    console.log(exp);
-    console.log(now);
     if (exp <= now) {
-      console.log("token sil");
       tokenService.removeToken()
     }
   }

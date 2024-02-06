@@ -12,7 +12,6 @@ import ForCorpPage from '../../pages/Offer/ForCorpPage'
 import IK from '../../pages/IK/IK'
 import Gallery from '../../pages/Gallery/Gallery'
 import Footer from "../Footer/Footer";
-import { OverlayLoader } from "../OverlayLoader/OverlayLoader";
 import NotFound from "../../pages/NotFound/NotFound";
 
 type Props = {}
@@ -35,7 +34,7 @@ const DarkRoute = (props: Props) => {
             <Route path="/kurumlar-icin" element={<ForCorpPage />}></Route>
             <Route path="/istanbul-kodluyor" element={<IK />}></Route>
             <Route path="/istanbul-kodluyor/galeri" element={<Gallery />}></Route>
-            <Route path="/*" element={<NotFound/>}></Route>
+            <Route path="*" element={<NotFound/>}></Route>
           </Routes>
         </main>
         <Footer />

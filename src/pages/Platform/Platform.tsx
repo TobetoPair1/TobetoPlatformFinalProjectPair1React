@@ -8,6 +8,7 @@ import ExamService from '../../Services/ExamService';
 import Exam from '../../Components/Exam/Exam';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedTokenModel } from '../../core/Models/DecodedTokenModel';
+import tokenService from '../../core/services/tokenService';
 
 type Props = {  
 }
@@ -15,8 +16,9 @@ type Props = {
 const Platform = (props: Props) => {
   const [name,setName]=useState("");
   const [exams,setExams]=useState<Paginate<ExamGetListResponseModel>>();  
-async function OnPageLoad() {  
-  const storageToken=localStorage.getItem("token");
+async function OnPageLoad() {
+  if(tokenService.hasToken()){    
+  const storageToken=tokenService.getToken();
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");  
   const decodedToken:DecodedTokenModel = jwtDecode(token.token)
   const fullName=decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
@@ -24,6 +26,7 @@ async function OnPageLoad() {
   const examsData:Paginate<ExamGetListResponseModel> = (await ExamService.GetListByUserId({PageIndex:0,PageSize:5},id)).data
   setName(fullName.split(' ')[0]);
   setExams(examsData);
+  }
 }
   useEffect( ()=>{    
     OnPageLoad();

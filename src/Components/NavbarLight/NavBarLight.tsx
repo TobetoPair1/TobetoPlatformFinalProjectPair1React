@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import UserService from '../../Services/UserService';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
-import { UserGetResponseModel } from '../../Models/Responses/User/UserGetResponseModel';
 import { DecodedTokenModel } from '../../core/Models/DecodedTokenModel';
 import { jwtDecode } from 'jwt-decode';
+import tokenService from '../../core/services/tokenService';
 
 type Props = {  
 }
@@ -12,11 +11,13 @@ type Props = {
 const NavBarLight = (props: Props) => {
   const [fullName,setFullName]=useState("");
 async function OnPageLoad() {  
-  const storageToken=localStorage.getItem("token");
+  if(tokenService.hasToken()){
+  const storageToken=tokenService.getToken();
   const token:TokenModel=JSON.parse(storageToken?storageToken:"");  
   const decodedToken:DecodedTokenModel = jwtDecode(token.token)
   const fullName=decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
   setFullName(fullName);
+  }
 }
   useEffect( ()=>{    
     OnPageLoad();

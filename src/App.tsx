@@ -24,7 +24,7 @@ function App() {
     }
   }
   return (
-    <>
+    <>    
       {
         path != "/istanbul-kodluyor"?
           path == "/"

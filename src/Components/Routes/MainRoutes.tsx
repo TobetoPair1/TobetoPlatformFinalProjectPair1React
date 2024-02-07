@@ -15,6 +15,7 @@ import IK from '../../pages/IK/IK'
 import Gallery from '../../pages/Gallery/Gallery'
 import Profile from '../../pages/Profile/Profile'
 import NotFound from '../../pages/NotFound/NotFound'
+import Calendar from '../Calendar/Calendar'
 
 type Props = {}
 
@@ -35,6 +36,7 @@ const MainRoutes = (props: Props) => {
             <Route path="/istanbul-kodluyor" element={<IK />}></Route>
             <Route path="/istanbul-kodluyor/galeri" element={<Gallery />}></Route>
             <Route path="/profilim" element={<Profile />}></Route>
+            <Route path="/takvim" element={<Calendar />}></Route>
             <Route path="*" element={<NotFound/>}></Route>
           </Routes>
   )

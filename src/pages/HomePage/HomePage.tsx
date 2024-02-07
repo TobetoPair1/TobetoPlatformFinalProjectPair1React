@@ -1,7 +1,7 @@
 import './Homepage.css';
 type Props = {}
 
-const HomePage = (props: Props) => {
+const Homepage = (props: Props) => {
     return (
         <>
             <div className="modal fade" id="TobetoVideo" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="TobetoVideoLabel" tabIndex={-1}>
@@ -475,4 +475,4 @@ const HomePage = (props: Props) => {
     )
 }
 
-export default HomePage
+export default Homepage

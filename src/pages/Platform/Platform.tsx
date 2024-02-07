@@ -44,6 +44,7 @@ const Platform = (props: Props) => {
       ).data;
       setName(fullName.split(' ')[0]);
       setExams(examsData);
+      await AnnouncementsList();
     } else {
       navigate('/giris');
     }
@@ -60,8 +61,7 @@ const Platform = (props: Props) => {
   };
 
   useEffect(() => {
-    OnPageLoad();
-    AnnouncementsList();
+    OnPageLoad();    
   }, []);
   return (
     <main>

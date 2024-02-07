@@ -3,13 +3,15 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import trLocale from '@fullcalendar/core/locales/tr';
-import { DateSelectArg } from '@fullcalendar/core/index.js';
+import { DateSelectArg, EventContentArg } from '@fullcalendar/core/index.js';
 import { useEffect, useState } from 'react';
 type Props = {};
 
 const Calendar = (props: Props) => {
+  const tarih=new Date(Date.now());
+  const tarihString=tarih.getFullYear()+"-0"+(tarih.getMonth()+1)+"-0"+tarih.getDate();
   const [events, setEvents] = useState<any>([
-    { title: 'Course Name', start: new Date() },
+    { title: 'Course Name', start:tarihString, time: "09:00", course: "Course", instructor: "Instructor",color:'ocean',borderColor:'blue'}
   ]);
 
   function handleDateSelect(selectInfo: DateSelectArg) {
@@ -17,7 +19,7 @@ const Calendar = (props: Props) => {
     if (!title) return;
     const calendarApi = selectInfo.view.calendar;
     calendarApi.unselect(); // seçilen tarihten seçimi kaldır
-    setEvents([...events, { title: title, ...selectInfo }]);
+    setEvents([...events, { ...selectInfo }]);
   }
 
   useEffect(() => {
@@ -37,11 +39,12 @@ const Calendar = (props: Props) => {
             right: 'dayGridMonth,timeGridWeek,timeGridDay',
           }}
           initialView="dayGridMonth"
-          editable={true}
-          selectable={true}
+          editable={false}
+          selectable={false}
           selectMirror={true}
           weekends={true}
-          events={events}
+          eventColor='green'
+          events={{ events }}
           select={(arg) => handleDateSelect(arg)} // tarihlerden herhangi birisi seçildiğinde tetiklenir.
           eventContent={renderEventContent} // tarihlerin gösterileceği fonksiyon, aslında bir component
           eventClick={(arg) => console.log(arg)} // tarihin içindeki eventlere tıklandığında tetiklenir
@@ -52,12 +55,14 @@ const Calendar = (props: Props) => {
   );
 };
 
-function renderEventContent(eventInfo: any) {
+function renderEventContent(eventInfo: EventContentArg) {
   return (
-    <>
-      <b>{"09:00"}</b><br/>
-      <b>{eventInfo.event.title}</b><br/>
-      <b>{"Instructor Name"}</b>
+    <>      
+      <div className="d-flex flex-column ms-4 my-1">
+        <span>{eventInfo.event.extendedProps.time}</span>
+        <span className="text-truncate">{eventInfo.event.extendedProps.course}</span>
+        <span className="text-truncate">{eventInfo.event.extendedProps.instructor}</span>
+      </div>
     </>
   );
 }

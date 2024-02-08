@@ -16,29 +16,31 @@ import Gallery from '../../pages/Gallery/Gallery'
 import Profile from '../../pages/Profile/Profile'
 import NotFound from '../../pages/NotFound/NotFound'
 import Calendar from '../Calendar/Calendar'
+import BlogPage from '../Blog/BlogPage'
 
 type Props = {}
 
 const MainRoutes = (props: Props) => {
   return (
     <Routes>
-      <Route path="/" element={<Homepage />}></Route>
-      <Route path="/hakkimizda" element={<AboutUs />}></Route>
-      <Route path="/katalog" element={<Catalog />}></Route>
-      <Route path="/codecademy" element={<Codecademy />}></Route>
-      <Route path="/giris" element={<LoginPage />}></Route>
-      <Route path="/kayit-ol" element={<Register />}></Route>
-      <Route path="/platform" element={<Platform />}></Route>
-      <Route path="/degerlendirmeler" element={<Appreciations />}></Route>
-      <Route path="/sifremi-unuttum" element={<ForgotPassword />}></Route>
-      <Route path="/bireyler-icin" element={<ForPeoplePage />}></Route>
-      <Route path="/kurumlar-icin" element={<ForCorpPage />}></Route>
-      <Route path="/istanbul-kodluyor" element={<IK />}></Route>
-      <Route path="/istanbul-kodluyor/galeri" element={<Gallery />}></Route>
-      <Route path="/profilim" element={<Profile />}></Route>
-      <Route path="/takvim" element={<Calendar />}></Route>
-      <Route path="*" element={<NotFound />}></Route>
-    </Routes>
+            <Route path="/" element={<Homepage />}></Route>
+            <Route path="/hakkimizda" element={<AboutUs />}></Route>
+            <Route path="/katalog" element={<Catalog />}></Route>
+            <Route path="/codecademy" element={<Codecademy />}></Route>
+            <Route path="/giris" element={<LoginPage />}></Route>
+            <Route path="/kayit-ol" element={<Register />}></Route>
+            <Route path="/platform" element={<Platform />}></Route>
+            <Route path="/degerlendirmeler" element={<Appreciations />}></Route>
+            <Route path="/sifremi-unuttum" element={<ForgotPassword />}></Route>
+            <Route path="/bireyler-icin" element={<ForPeoplePage />}></Route>
+            <Route path="/kurumlar-icin" element={<ForCorpPage />}></Route>
+            <Route path="/istanbul-kodluyor" element={<IK />}></Route>
+            <Route path="/istanbul-kodluyor/galeri" element={<Gallery />}></Route>
+            <Route path="/profilim" element={<Profile />}></Route>
+            <Route path="/takvim" element={<Calendar />}></Route>
+            <Route path="/blog" element={<BlogPage/>}></Route>
+            <Route path="*" element={<NotFound/>}></Route>
+          </Routes>
   )
 }
 

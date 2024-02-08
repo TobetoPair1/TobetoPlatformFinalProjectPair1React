@@ -44,6 +44,8 @@ function App() {
             path == "/bireyler-icin"
             ||
             path == "/kurumlar-icin"
+            ||
+            path == "/blog"
             ?
             <><Banner /><NavbarDark /></>
             : <NavBarLight />
@@ -67,7 +69,9 @@ function App() {
             ||
             path == "/bireyler-icin"
             ||
-            path == "/kurumlar-icin" ? <DarkRoute />
+            path == "/kurumlar-icin"
+            ||
+            path == "/blog" ? <DarkRoute />
         : <LightRoute />
       }
     </>

@@ -19,12 +19,15 @@ import { ApplicationGetListResponseModel } from '../../Models/Responses/Applicat
 type Props = {};
 
 const Platform = (props: Props) => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [exams, setExams] = useState<Paginate<ExamGetListResponseModel>>();
   const [tab, setTab] = useState('basvurularim');
+  const [applications, setApplications] = useState<Paginate<ApplicationGetListResponseModel>>();
 
-  async function GetApplications(id: string):Promise<Paginate<ApplicationGetListResponseModel>>{
-    return (await ApplicationService.GetListByUserId({PageIndex:0,PageSize:3},id)).data;
+  async function GetApplications(id: string){
+    const applications = (await ApplicationService.GetListByUserId({PageIndex:0,PageSize:3},id)).data;
+    setApplications(applications);
   }
 
   const OnSelectTab = (select: string) => {
@@ -50,6 +53,7 @@ const Platform = (props: Props) => {
       setName(fullName.split(' ')[0]);
       setExams(examsData);
       await AnnouncementsList();
+      await GetApplications(id);
     } 
   }
 
@@ -357,7 +361,7 @@ const Platform = (props: Props) => {
                     tabIndex={0}
                   >
                     <div className='row'>
-                      <ApplicationForm/>
+                      <ApplicationForm applications={applications as Paginate<ApplicationGetListResponseModel>}/>
                     </div>
                   </div>
                   <div
@@ -675,7 +679,7 @@ const Platform = (props: Props) => {
                             </div>
                           </div>
                         </div>
-                        <div className='showMoreBtn'>Daha Fazla Göster</div>
+                        <div className='showMoreBtn' onClick={() => navigate("/egitimlerim")}>Daha Fazla Göster</div>
                       </div>
                     </div>
                   </div>

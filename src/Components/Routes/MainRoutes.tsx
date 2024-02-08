@@ -16,6 +16,7 @@ import Profile from '../../pages/Profile/Profile'
 import NotFound from '../../pages/NotFound/NotFound'
 import Calendar from '../Calendar/Calendar'
 import BlogPage from '../Blog/BlogPage'
+import EducationPage from '../../pages/EducationPage/EducationPage'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 type Props = {}
@@ -39,6 +40,7 @@ const MainRoutes = (props: Props) => {
             <Route path="/profilim" element={<ProtectedRoute><Profile /></ProtectedRoute> }></Route>
             <Route path="/takvim" element={<ProtectedRoute><Calendar /></ProtectedRoute>}></Route>
             <Route path="/blog" element={<BlogPage/>}></Route>
+            <Route path="/egitimlerim" element={<EducationPage/>}></Route>
             <Route path="*" element={<NotFound/>}></Route>
           </Routes>
   )

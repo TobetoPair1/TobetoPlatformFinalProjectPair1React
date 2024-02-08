@@ -48,7 +48,7 @@ function App() {
             path == "/blog"
             ?
             <><Banner /><NavbarDark /></>
-            : <ProtectedRoute><NavBarLight /></ProtectedRoute> 
+            : <ProtectedRoute><NavBarLight/></ProtectedRoute> 
           : null
 
       }
@@ -72,7 +72,7 @@ function App() {
             path == "/kurumlar-icin"
             ||
             path == "/blog" ? <DarkRoute />
-        : <LightRoute />
+        : <LightRoute/> 
       }
     </>
   );

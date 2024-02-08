@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import tokenService from "../../core/services/tokenService";
+import toastr from "toastr";
 
 type Props = {
     children:ReactElement
@@ -14,6 +15,7 @@ const ProtectedRoute = (props: Props) => {
         setIsSafe(true);
       }
       else {
+        toastr.warning("Geçersiz token.")
         navigate('/giris')
       }
     })

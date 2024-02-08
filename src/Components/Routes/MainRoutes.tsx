@@ -16,6 +16,7 @@ import Gallery from '../../pages/Gallery/Gallery'
 import Profile from '../../pages/Profile/Profile'
 import NotFound from '../../pages/NotFound/NotFound'
 import Calendar from '../Calendar/Calendar'
+import BlogPage from '../Blog/BlogPage'
 
 type Props = {}
 
@@ -38,6 +39,7 @@ const MainRoutes = (props: Props) => {
             <Route path="/profilim" element={<Profile />}></Route>
             <Route path="/takvim" element={<Calendar />}></Route>
             <Route path="*" element={<NotFound/>}></Route>
+            <Route path="/blog" element={<BlogPage/>}></Route>
           </Routes>
   )
 }

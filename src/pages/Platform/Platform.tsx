@@ -23,9 +23,11 @@ const Platform = (props: Props) => {
   const [name, setName] = useState('');
   const [exams, setExams] = useState<Paginate<ExamGetListResponseModel>>();
   const [tab, setTab] = useState('basvurularim');
+  const [applications, setApplications] = useState<Paginate<ApplicationGetListResponseModel>>();
 
-  async function GetApplications(id: string):Promise<Paginate<ApplicationGetListResponseModel>>{
-    return (await ApplicationService.GetListByUserId({PageIndex:0,PageSize:3},id)).data;
+  async function GetApplications(id: string){
+    const applications = (await ApplicationService.GetListByUserId({PageIndex:0,PageSize:3},id)).data;
+    setApplications(applications);
   }
 
   const OnSelectTab = (select: string) => {
@@ -51,6 +53,7 @@ const Platform = (props: Props) => {
       setName(fullName.split(' ')[0]);
       setExams(examsData);
       await AnnouncementsList();
+      await GetApplications(id);
     } else {
       navigate('/giris');
     }
@@ -360,7 +363,7 @@ const Platform = (props: Props) => {
                     tabIndex={0}
                   >
                     <div className='row'>
-                      <ApplicationForm/>
+                      <ApplicationForm applications={applications as Paginate<ApplicationGetListResponseModel>}/>
                     </div>
                   </div>
                   <div

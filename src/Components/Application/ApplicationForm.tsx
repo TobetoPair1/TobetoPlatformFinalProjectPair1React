@@ -1,10 +1,17 @@
-type Props = {};
+import { ApplicationGetResponseModel } from "../../Models/Responses/Application/ApplicationGetResponseModel";
+import { Paginate } from "../../core/Models/Paginate";
+
+type Props = {
+  applications:Paginate<ApplicationGetResponseModel>
+};
 
 const ApplicationForm = (props: Props) => {
   return (
-    <div className="col-md-6 col-12 mt-2">
-      <div className="status-card status_accepted">
-        <span className="form_name">İstanbul Kodluyor</span>
+    <>
+    {props.applications?.items.map((application) => {
+      return <div key={application.id} className="col-md-6 col-12 mt-2">
+      <div className={"status-card status_" + (application.state)}>
+        <span className="form_name">{application.title}</span>
         <span className="form_status" />
         <span className="pull_back" />
         <span className="form_name">Bilgilendirme</span>
@@ -22,13 +29,12 @@ const ApplicationForm = (props: Props) => {
                 style={{ color: "green", marginRight: "5px" }}
               />
               <span className="form_date">
-                {" "}
-                İstanbul Kodluyor Başvuru Formu onaylandı.
+                {application.formUrl}
               </span>
             </div>
           </div>
           <div>
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -43,11 +49,13 @@ const ApplicationForm = (props: Props) => {
                 {" "}
                 İstanbul Kodluyor Belge Yükleme Formu onaylandı.
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
     </div>
+    })}
+    </>
   );
 };
 

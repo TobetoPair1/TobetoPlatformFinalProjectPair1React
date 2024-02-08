@@ -1869,6 +1869,76 @@ iframe {
   border-radius: 16px 0 0 16px;
   font-size: 12px;
 }
+.status-card.status_rejected {
+  border-radius: 8px;
+  border-left: 6px solid #e30a17
+}
+
+.status-card.status_rejected:after {
+  min-width: 140px;
+  position: absolute;
+  background-color: #e30a17;
+  color: #fff;
+  content: "Kabul Edilmedi";
+  top: 12px;
+  right: -4px;
+  padding: 4px 8px;
+  border-radius: 16px 0 0 16px;
+  font-size: 12px
+}
+
+.status-card.status_pending {
+  border-radius: 8px;
+  border-left: 6px solid #ffc107
+}
+
+.status-card.status_pending:after {
+  min-width: 140px;
+  position: absolute;
+  background-color: #ffc107;
+  color: #fff;
+  content: "Değerlendirmede";
+  top: 12px;
+  right: -4px;
+  padding: 4px 8px;
+  border-radius: 16px 0 0 16px;
+  font-size: 12px
+}
+
+.status-card.status_processing {
+  border-radius: 8px;
+  border-left: 6px solid #ffc107
+}
+
+.status-card.status_processing:after {
+  min-width: 140px;
+  position: absolute;
+  background-color: #ffc107;
+  color: #fff;
+  content: "Değerlendirmede";
+  top: 12px;
+  right: -4px;
+  padding: 4px 8px;
+  border-radius: 16px 0 0 16px;
+  font-size: 12px
+}
+
+.status-card.status_processing .pull_back {
+  cursor: pointer
+}
+
+.status-card.status_processing .pull_back:after {
+  position: absolute;
+  background-color: #ff5722;
+  color: #fff;
+  content: "Başvuruyu Geri çek";
+  top: 52px;
+  right: -4px;
+  padding: 4px 8px;
+  border-radius: 16px 0 0 16px;
+  font-size: 12px;
+  min-width: 140px
+}
 .status-card .form_name {
   font-size: 14px;
   font-weight: 600;

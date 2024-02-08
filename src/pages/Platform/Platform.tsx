@@ -19,6 +19,7 @@ import { ApplicationGetListResponseModel } from '../../Models/Responses/Applicat
 type Props = {};
 
 const Platform = (props: Props) => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [exams, setExams] = useState<Paginate<ExamGetListResponseModel>>();
   const [tab, setTab] = useState('basvurularim');
@@ -678,7 +679,7 @@ const Platform = (props: Props) => {
                             </div>
                           </div>
                         </div>
-                        <div className='showMoreBtn'>Daha Fazla Göster</div>
+                        <div className='showMoreBtn' onClick={() => navigate("/egitimlerim")}>Daha Fazla Göster</div>
                       </div>
                     </div>
                   </div>

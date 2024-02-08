@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 import { DecodedTokenModel } from '../../core/Models/DecodedTokenModel';
@@ -7,8 +7,8 @@ import tokenService from '../../core/services/tokenService';
 
 type Props = {  
 }
-
 const NavBarLight = (props: Props) => {
+  const path = useLocation().pathname;
   const [fullName,setFullName]=useState("");
   const [openProfileButton,setOpenButton]=useState(false);
 async function OnPageLoad() {
@@ -33,12 +33,12 @@ const OnClickProfileButton=()=>{
               <path fillRule="evenodd" clipRule="evenodd" d="M3.5 7C3.22386 7 3 6.77614 3 6.5C3 6.22386 3.22386 6 3.5 6H20.5C20.7761 6 21 6.22386 21 6.5C21 6.77614 20.7761 7 20.5 7H3.5ZM3.5 12C3.22386 12 3 11.7761 3 11.5C3 11.2239 3.22386 11 3.5 11H20.5C20.7761 11 21 11.2239 21 11.5C21 11.7761 20.7761 12 20.5 12H3.5ZM3 16.5C3 16.7761 3.22386 17 3.5 17H20.5C20.7761 17 21 16.7761 21 16.5C21 16.2239 20.7761 16 20.5 16H3.5C3.22386 16 3 16.2239 3 16.5Z" fill="#828282" />
             </svg></button>
           <ul className="d-none d-xxl-flex navbar-nav">
-            <li className="nav-item"><Link className="nav-link nav-active" to="/platform">Ana Sayfa</Link></li>
-            <li className="nav-item"><Link className="nav-link c-gray-3" to="/profilim">Profilim</Link></li>
-            <li className="nav-item"><Link className="nav-link c-gray-3" to="/değerlendirmeler">Değerlendirmeler</Link></li>
-            <li className="nav-item"><Link className="nav-link c-gray-3" to="/katalog">Katalog</Link></li>
-            <li className="nav-item"><Link className="nav-link c-gray-3" to="/takvim">Takvim</Link></li>
-            <li className="nav-item"><Link className="nav-link c-gray-3" to="/istanbul-kodluyor">İstanbul Kodluyor</Link></li>
+            <li className="nav-item"><Link className={"nav-link "+ (path == "/platform"?"nav-active":"c-gray-3")} to="/platform">Ana Sayfa</Link></li>
+            <li className="nav-item"><Link className={"nav-link "+ (path == "/profilim"?"nav-active":"c-gray-3")} to="/profilim">Profilim</Link></li>
+            <li className="nav-item"><Link className={"nav-link "+ (path == "/degerlendirmeler"?"nav-active":"c-gray-3")} to="/degerlendirmeler">Değerlendirmeler</Link></li>
+            <li className="nav-item"><Link className={"nav-link "+ (path == "/katalog"?"nav-active":"c-gray-3")} to="/katalog">Katalog</Link></li>
+            <li className="nav-item"><Link className={"nav-link "+ (path == "/takvim"?"nav-active":"c-gray-3")} to="/takvim">Takvim</Link></li>
+            <li className="nav-item"><Link className={"nav-link "+ (path == "/istanbul-kodluyor"?"nav-active":"c-gray-3")} to="/istanbul-kodluyor">İstanbul Kodluyor</Link></li>
           </ul>
           <div className="d-none d-xxl-block">
             <div className="d-flex justify-space-between align-items-center">

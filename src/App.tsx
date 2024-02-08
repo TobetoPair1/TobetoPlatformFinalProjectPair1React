@@ -26,7 +26,8 @@ function App() {
   return (
     <>    
       {
-        path != "/istanbul-kodluyor"?
+        path != "/istanbul-kodluyor"
+            ?
           path == "/"
             ||
             path == "/hakkimizda"
@@ -71,7 +72,8 @@ function App() {
             ||
             path == "/kurumlar-icin"
             ||
-            path == "/blog" ? <DarkRoute />
+            path == "/blog"
+            ? <DarkRoute />
         : <LightRoute />
       }
     </>

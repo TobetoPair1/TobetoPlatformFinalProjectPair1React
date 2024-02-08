@@ -12,14 +12,20 @@ import tokenService from '../../core/services/tokenService';
 import { AnnouncementGetListResponseModel } from '../../Models/Responses/Announcement/AnnouncementGetListResponseModel';
 import AnnouncementService from '../../Services/AnnouncementService';
 import AnnouncementCard from '../../Components/Announcement/AnnouncementCard';
+import ApplicationForm from '../../Components/Application/ApplicationForm';
+import ApplicationService from '../../Services/ApplicationService';
+import { ApplicationGetListResponseModel } from '../../Models/Responses/Application/ApplicationGetListResponseModel';
 
 type Props = {};
 
 const Platform = (props: Props) => {
   const [name, setName] = useState('');
   const [exams, setExams] = useState<Paginate<ExamGetListResponseModel>>();
-
   const [tab, setTab] = useState('basvurularim');
+
+  async function GetApplications(id: string):Promise<Paginate<ApplicationGetListResponseModel>>{
+    return (await ApplicationService.GetListByUserId({PageIndex:0,PageSize:3},id)).data;
+  }
 
   const OnSelectTab = (select: string) => {
     setTab(select);
@@ -351,53 +357,7 @@ const Platform = (props: Props) => {
                     tabIndex={0}
                   >
                     <div className='row'>
-                      <div className='col-md-6 col-12 mt-2'>
-                        <div className='status-card status_accepted'>
-                          <span className='form_name'>İstanbul Kodluyor</span>
-                          <span className='form_status' />
-                          <span className='pull_back' />
-                          <span className='form_name'>Bilgilendirme</span>
-                          <div>
-                            <div>
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                }}
-                              >
-                                <i
-                                  className='fa fa-check fa-sm'
-                                  aria-hidden='true'
-                                  style={{ color: 'green', marginRight: '5px' }}
-                                />
-                                <span className='form_date'>
-                                  {' '}
-                                  İstanbul Kodluyor Başvuru Formu onaylandı.
-                                </span>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                }}
-                              >
-                                <i
-                                  className='fa fa-check fa-sm'
-                                  aria-hidden='true'
-                                  style={{ color: 'green', marginRight: '5px' }}
-                                />
-                                <span className='form_date'>
-                                  {' '}
-                                  İstanbul Kodluyor Belge Yükleme Formu
-                                  onaylandı.
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <ApplicationForm/>
                     </div>
                   </div>
                   <div

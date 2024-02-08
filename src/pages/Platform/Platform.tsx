@@ -16,7 +16,6 @@ import AnnouncementCard from '../../Components/Announcement/AnnouncementCard';
 type Props = {};
 
 const Platform = (props: Props) => {
-  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [exams, setExams] = useState<Paginate<ExamGetListResponseModel>>();
 
@@ -45,9 +44,7 @@ const Platform = (props: Props) => {
       setName(fullName.split(' ')[0]);
       setExams(examsData);
       await AnnouncementsList();
-    } else {
-      navigate('/giris');
-    }
+    } 
   }
 
   const [announcements, setAnnouncements] =

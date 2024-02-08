@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import Banner from "./Components/Banner/Banner";
 import NavbarDark from "./Components/NavbarDark/NavbarDark";
-//import './App.css'
 import { OverlayLoader } from "./Components/OverlayLoader/OverlayLoader";
 import NavBarLight from "./Components/NavbarLight/NavBarLight";
 import DarkRoute from "./Components/Routes/DarkRoute";
@@ -9,6 +8,7 @@ import LightRoute from "./Components/Routes/LightRoute";
 import tokenService from "./core/services/tokenService";
 import { jwtDecode } from "jwt-decode";
 import { DecodedTokenModel } from "./core/Models/DecodedTokenModel";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
             path == "/kurumlar-icin"
             ?
             <><Banner /><NavbarDark /></>
-            : <NavBarLight />
+            : <ProtectedRoute><NavBarLight /></ProtectedRoute> 
           : null
 
       }
@@ -68,7 +68,7 @@ function App() {
             path == "/bireyler-icin"
             ||
             path == "/kurumlar-icin" ? <DarkRoute />
-        : <LightRoute />
+        :<ProtectedRoute><LightRoute /></ProtectedRoute> 
       }
     </>
   );

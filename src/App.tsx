@@ -27,6 +27,8 @@ function App() {
     <>    
       {
         path != "/istanbul-kodluyor"
+        &&
+        path != "/kurs"
             ?
           path == "/"
             ||

@@ -28,14 +28,13 @@ const EducatiostCourseCart = (props: Props) => {
                             {new Date(course.startOfDate).toLocaleString()}
                         </span>
                     </div>
-                    <Link className='apply-btn' to=''>
+                    <Link className='apply-btn' to='/kurs'>
                         Eğitime Git
                     </Link>
                 </div>
             </div>
         </div>
         })}
-        
         </>
     )
 }

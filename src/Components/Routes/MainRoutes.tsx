@@ -18,6 +18,7 @@ import Calendar from '../Calendar/Calendar'
 import BlogPage from '../Blog/BlogPage'
 import EducationPage from '../../pages/EducationPage/EducationPage'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import CoursePage from '../../pages/CoursePage/CoursePage'
 
 type Props = {}
 
@@ -41,6 +42,7 @@ const MainRoutes = (props: Props) => {
             <Route path="/takvim" element={<ProtectedRoute><Calendar /></ProtectedRoute>}></Route>
             <Route path="/blog" element={<BlogPage/>}></Route>
             <Route path="/egitimlerim" element={<ProtectedRoute><EducationPage/></ProtectedRoute> }></Route>
+            <Route path="/kurs" element={<ProtectedRoute><CoursePage/></ProtectedRoute>}></Route>
             <Route path="*" element={<NotFound/>}></Route>
           </Routes>
   )

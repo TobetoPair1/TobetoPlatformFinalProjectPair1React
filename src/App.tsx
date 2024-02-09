@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      {path != '/istanbul-kodluyor' ? (
+      {path != '/istanbul-kodluyor' && path != '/kurs' ? (
         path == '/' ||
         path == '/hakkimizda' ||
         path == '/katalog' ||

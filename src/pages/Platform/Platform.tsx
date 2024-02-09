@@ -12,7 +12,14 @@ import { ApplicationGetListResponseModel } from '../../Models/Responses/Applicat
 import EducatiostCourseCart from '../../Components/EducationsCourseCart/EducatiostCourseCart';
 import { CourseGetListResponseModel } from '../../Models/Responses/Course/CourseGetListResponseModel';
 import { useSelector } from 'react-redux';
-import { PlatformModel, getAnnouncements, getApplications, getCourses, getExams, platformActions } from '../../store/platform/platformSlice';
+import {
+  PlatformModel,
+  getAnnouncements,
+  getApplications,
+  getCourses,
+  getExams,
+  platformActions,
+} from '../../store/platform/platformSlice';
 import { store } from '../../store/configureStore';
 
 type Props = {};
@@ -25,27 +32,32 @@ const Platform = (props: Props) => {
     setTab(select);
   };
 
-  async function OnPageLoad() {
-    if (tokenService.hasToken()) {
-      store.dispatch(platformActions.decodeToken());
-      store.dispatch(platformActions.getUser());
-    }
-  }
   async function OnUserLoad() {
-    await store.dispatch(getExams({ id: platform.user.id, pageRequest: { PageIndex: 0, PageSize: 3 } }));
+    await store.dispatch(
+      getExams({
+        id: platform.user.id,
+        pageRequest: { PageIndex: 0, PageSize: 3 },
+      })
+    );
     await store.dispatch(getAnnouncements({ PageIndex: 0, PageSize: 3 }));
-    await store.dispatch(getApplications({ id: platform.user.id, pageRequest: { PageIndex: 0, PageSize: 3 } }))
-    await store.dispatch(getCourses({ id: platform.user.id, pageRequest: { PageIndex: 0, PageSize: 4 } }));
+    await store.dispatch(
+      getApplications({
+        id: platform.user.id,
+        pageRequest: { PageIndex: 0, PageSize: 3 },
+      })
+    );
+    await store.dispatch(
+      getCourses({
+        id: platform.user.id,
+        pageRequest: { PageIndex: 0, PageSize: 4 },
+      })
+    );
   }
 
   useEffect(() => {
-    OnPageLoad();
-  }, []);
-  useEffect(() => {
-    if (platform.user.id!=undefined) {
+    if (platform.user.id != undefined) {
       console.log(platform.user);
       OnUserLoad();
-
     }
   }, [platform.user]);
 
@@ -340,7 +352,11 @@ const Platform = (props: Props) => {
                     tabIndex={0}
                   >
                     <div className='row'>
-                      <ApplicationForm applications={platform.applications as Paginate<ApplicationGetListResponseModel>} />
+                      <ApplicationForm
+                        applications={
+                          platform.applications as Paginate<ApplicationGetListResponseModel>
+                        }
+                      />
                     </div>
                   </div>
                   <div
@@ -364,11 +380,22 @@ const Platform = (props: Props) => {
                             tabIndex={0}
                           >
                             <div className='row'>
-                              <EducatiostCourseCart courses={platform.courses as Paginate<CourseGetListResponseModel>} />
+                              <EducatiostCourseCart
+                                courses={
+                                  platform.courses as Paginate<CourseGetListResponseModel>
+                                }
+                              />
                             </div>
                           </div>
                         </div>
-                        {(platform.courses?.count as number) > 4 ? <div className='showMoreBtn' onClick={() => navigate("/egitimlerim")}>Daha Fazla Göster</div> : null}
+                        {(platform.courses?.count as number) > 4 ? (
+                          <div
+                            className='showMoreBtn'
+                            onClick={() => navigate('/egitimlerim')}
+                          >
+                            Daha Fazla Göster
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>
@@ -494,7 +521,9 @@ const Platform = (props: Props) => {
                 <span className='exams-header'>Sınavlarım</span>
               </div>
               <div className='exams my-3'>
-                <Exam exams={platform.exams as Paginate<ExamGetListResponseModel>} />
+                <Exam
+                  exams={platform.exams as Paginate<ExamGetListResponseModel>}
+                />
               </div>
             </div>
           </div>

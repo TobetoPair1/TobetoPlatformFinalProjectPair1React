@@ -1,75 +1,54 @@
 import { useEffect, useState } from 'react';
-import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 import './Platform.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Paginate } from '../../core/Models/Paginate';
 import { ExamGetListResponseModel } from '../../Models/Responses/Exam/ExamGetListResponseModel';
-import ExamService from '../../Services/ExamService';
 import Exam from '../../Components/Exam/Exam';
-import { jwtDecode } from 'jwt-decode';
-import { DecodedTokenModel } from '../../core/Models/DecodedTokenModel';
 import tokenService from '../../core/services/tokenService';
 import { AnnouncementGetListResponseModel } from '../../Models/Responses/Announcement/AnnouncementGetListResponseModel';
-import AnnouncementService from '../../Services/AnnouncementService';
 import AnnouncementCard from '../../Components/Announcement/AnnouncementCard';
 import ApplicationForm from '../../Components/Application/ApplicationForm';
-import ApplicationService from '../../Services/ApplicationService';
 import { ApplicationGetListResponseModel } from '../../Models/Responses/Application/ApplicationGetListResponseModel';
+import EducatiostCourseCart from '../../Components/EducationsCourseCart/EducatiostCourseCart';
+import { CourseGetListResponseModel } from '../../Models/Responses/Course/CourseGetListResponseModel';
+import { useSelector } from 'react-redux';
+import { PlatformModel, getAnnouncements, getApplications, getCourses, getExams, platformActions } from '../../store/platform/platformSlice';
+import { store } from '../../store/configureStore';
 
 type Props = {};
 
 const Platform = (props: Props) => {
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [exams, setExams] = useState<Paginate<ExamGetListResponseModel>>();
   const [tab, setTab] = useState('basvurularim');
-  const [applications, setApplications] = useState<Paginate<ApplicationGetListResponseModel>>();
-
-  async function GetApplications(id: string){
-    const applications = (await ApplicationService.GetListByUserId({PageIndex:0,PageSize:3},id)).data;
-    setApplications(applications);
-  }
-
+  const platform: PlatformModel = useSelector((state: any) => state.platform);
   const OnSelectTab = (select: string) => {
     setTab(select);
   };
 
   async function OnPageLoad() {
     if (tokenService.hasToken()) {
-      const storageToken = tokenService.getToken();
-      const token: TokenModel = JSON.parse(storageToken ? storageToken : '');
-      const decodedToken: DecodedTokenModel = jwtDecode(token.token);
-      const fullName =
-        decodedToken[
-          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
-        ];
-      const id =
-        decodedToken[
-          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
-        ];
-      const examsData: Paginate<ExamGetListResponseModel> = (
-        await ExamService.GetListByUserId({ PageIndex: 0, PageSize: 5 }, id)
-      ).data;
-      setName(fullName.split(' ')[0]);
-      setExams(examsData);
-      await AnnouncementsList();
-      await GetApplications(id);
-    } 
+      store.dispatch(platformActions.decodeToken());
+      store.dispatch(platformActions.getUser());
+    }
+  }
+  async function OnUserLoad() {
+    await store.dispatch(getExams({ id: platform.user.id, pageRequest: { PageIndex: 0, PageSize: 3 } }));
+    await store.dispatch(getAnnouncements({ PageIndex: 0, PageSize: 3 }));
+    await store.dispatch(getApplications({ id: platform.user.id, pageRequest: { PageIndex: 0, PageSize: 3 } }))
+    await store.dispatch(getCourses({ id: platform.user.id, pageRequest: { PageIndex: 0, PageSize: 4 } }));
   }
 
-  const [announcements, setAnnouncements] =
-    useState<Paginate<AnnouncementGetListResponseModel>>();
-
-  const AnnouncementsList = async () => {
-    const result: Paginate<AnnouncementGetListResponseModel> = (
-      await AnnouncementService.getAll({ PageIndex: 0, PageSize: 3 })
-    ).data;
-    setAnnouncements(result);
-  };
-
   useEffect(() => {
-    OnPageLoad();    
+    OnPageLoad();
   }, []);
+  useEffect(() => {
+    if (platform.user.id!=undefined) {
+      console.log(platform.user);
+      OnUserLoad();
+
+    }
+  }, [platform.user]);
+
   return (
     <main>
       <div className='plaform-page' style={{ minHeight: '120vh' }}>
@@ -171,7 +150,7 @@ const Platform = (props: Props) => {
                   className='fw-normal mb-5'
                   style={{ color: '#555', fontSize: '36px' }}
                 >
-                  {name}
+                  {platform.user.firstName}
                 </h4>
                 <p className='tobeto-slogan'>
                   Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda
@@ -361,7 +340,7 @@ const Platform = (props: Props) => {
                     tabIndex={0}
                   >
                     <div className='row'>
-                      <ApplicationForm applications={applications as Paginate<ApplicationGetListResponseModel>}/>
+                      <ApplicationForm applications={platform.applications as Paginate<ApplicationGetListResponseModel>} />
                     </div>
                   </div>
                   <div
@@ -385,301 +364,11 @@ const Platform = (props: Props) => {
                             tabIndex={0}
                           >
                             <div className='row'>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/23_EAH_1_45f7232003.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>
-                                        Dr. Ecmel Ayral'dan Hoşgeldin Mesajı
-                                      </span>
-                                      <span className='platform-course-date'>
-                                        21 Eylül 2023 15:20
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/23_ENK_1_b4d858c1a9.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Eğitimlere Nasıl Katılırım?</span>
-                                      <span className='platform-course-date'>
-                                        8 Eylül 2023 17:06
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/CFE_20235_87c666a723.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Herkes İçin Kodlama - 2A</span>
-                                      <span className='platform-course-date'>
-                                        2 Ekim 2023 03:00
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Hoşgeldin Buluşması - 2</span>
-                                      <span className='platform-course-date'>
-                                        2 Ekim 2023 03:00
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className='tab-pane fade '
-                            id='started-tab-pane'
-                            role='tabpanel'
-                            aria-labelledby='started-tab'
-                            tabIndex={0}
-                          >
-                            <div className='row'>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/23_EAH_1_45f7232003.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>
-                                        Dr. Ecmel Ayral'dan Hoşgeldin Mesajı
-                                      </span>
-                                      <span className='platform-course-date'>
-                                        21 Eylül 2023 15:20
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/23_ENK_1_b4d858c1a9.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Eğitimlere Nasıl Katılırım?</span>
-                                      <span className='platform-course-date'>
-                                        8 Eylül 2023 17:06
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/CFE_20235_87c666a723.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Herkes İçin Kodlama - 2A</span>
-                                      <span className='platform-course-date'>
-                                        2 Ekim 2023 03:00
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Hoşgeldin Buluşması - 2</span>
-                                      <span className='platform-course-date'>
-                                        2 Ekim 2023 03:00
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className='tab-pane fade '
-                            id='done-lessons-tab-pane'
-                            role='tabpanel'
-                            aria-labelledby='done-lessons-tab'
-                            tabIndex={0}
-                          >
-                            <div className='row'>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/23_EAH_1_45f7232003.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>
-                                        Dr. Ecmel Ayral'dan Hoşgeldin Mesajı
-                                      </span>
-                                      <span className='platform-course-date'>
-                                        21 Eylül 2023 15:20
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                                "apply-btn" to=""
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/23_ENK_1_b4d858c1a9.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Eğitimlere Nasıl Katılırım?</span>
-                                      <span className='platform-course-date'>
-                                        8 Eylül 2023 17:06
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/CFE_20235_87c666a723.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Herkes İçin Kodlama - 2A</span>
-                                      <span className='platform-course-date'>
-                                        2 Ekim 2023 03:00
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className='col-md-3 col-12 mb-4'>
-                                <div className='corp-edu-card'>
-                                  <div
-                                    className='card-img'
-                                    style={{
-                                      backgroundImage:
-                                        'url("https://tobeto.s3.cloud.ngn.com.tr/CFE_232_7a27b4deb3.jpg")',
-                                    }}
-                                  />
-                                  <div className='card-content'>
-                                    <div className='d-flex flex-column'>
-                                      <span>Hoşgeldin Buluşması - 2</span>
-                                      <span className='platform-course-date'>
-                                        2 Ekim 2023 03:00
-                                      </span>
-                                    </div>
-                                    <Link className='apply-btn' to=''>
-                                      Eğitime Git
-                                    </Link>
-                                  </div>
-                                </div>
-                              </div>
+                              <EducatiostCourseCart courses={platform.courses as Paginate<CourseGetListResponseModel>} />
                             </div>
                           </div>
                         </div>
-                        <div className='showMoreBtn' onClick={() => navigate("/egitimlerim")}>Daha Fazla Göster</div>
+                        {(platform.courses?.count as number) > 4 ? <div className='showMoreBtn' onClick={() => navigate("/egitimlerim")}>Daha Fazla Göster</div> : null}
                       </div>
                     </div>
                   </div>
@@ -696,7 +385,7 @@ const Platform = (props: Props) => {
                     <div className='row'>
                       <AnnouncementCard
                         announcements={
-                          announcements as Paginate<AnnouncementGetListResponseModel>
+                          platform.announcements as Paginate<AnnouncementGetListResponseModel>
                         }
                       />
 
@@ -805,7 +494,7 @@ const Platform = (props: Props) => {
                 <span className='exams-header'>Sınavlarım</span>
               </div>
               <div className='exams my-3'>
-                <Exam exams={exams as Paginate<ExamGetListResponseModel>} />
+                <Exam exams={platform.exams as Paginate<ExamGetListResponseModel>} />
               </div>
             </div>
           </div>

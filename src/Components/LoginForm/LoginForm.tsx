@@ -31,7 +31,6 @@ const LoginForm = (props: Props) => {
   })
   const OnLogin =async (values: FormValues) => {    
   const token= await AuthService.login({email:values.email,password:values.password})
-  console.log(token);
    if(token.status==HttpStatusCode.Ok){
     localStorage.setItem("token", JSON.stringify({...token.data}));
     navigate("/platform");

@@ -9,7 +9,7 @@ function Exam(props: Props) {
   return (    
 <>
     {       
-        props.exams?.items.map((item:ExamGetListResponseModel,i:number)=>{
+        props.exams?.items?.map((item:ExamGetListResponseModel,i:number)=>{
             return <div key={i} className="exam-card  ">
                     <div className="exam-header"><span className="exam-name">{item.title}</span><span className="lesson-name">{item.type}</span></div>
                     <div className="exam-details">

@@ -8,7 +8,7 @@ type props = {
 const AnnouncementCard = (props: props) => {
   return (
     <>
-      {props.announcements?.items.map(
+      {props.announcements?.items?.map(
         (announcement: AnnouncementGetListResponseModel) => (
           <div key={announcement.id} className='col-md-4 col-12 my-4'>
             <div className='notfy-card notify'>

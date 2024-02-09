@@ -40,7 +40,7 @@ const MainRoutes = (props: Props) => {
             <Route path="/profilim" element={<ProtectedRoute><Profile /></ProtectedRoute> }></Route>
             <Route path="/takvim" element={<ProtectedRoute><Calendar /></ProtectedRoute>}></Route>
             <Route path="/blog" element={<BlogPage/>}></Route>
-            <Route path="/egitimlerim" element={<EducationPage/>}></Route>
+            <Route path="/egitimlerim" element={<ProtectedRoute><EducationPage/></ProtectedRoute> }></Route>
             <Route path="*" element={<NotFound/>}></Route>
           </Routes>
   )

@@ -49,7 +49,7 @@ function App() {
             path == "/blog"
             ?
             <><Banner /><NavbarDark /></>
-            : <ProtectedRoute><NavBarLight/></ProtectedRoute> 
+            : <NavBarLight/> 
           : null
 
       }

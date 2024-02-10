@@ -19,6 +19,8 @@ import BlogPage from '../Blog/BlogPage'
 import EducationPage from '../../pages/EducationPage/EducationPage'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import CoursePage from '../../pages/CoursePage/CoursePage'
+import ChatBot from '../ChatBotClose/ChatBot'
+import ChatBotOpen from '../ChatBotOpen/ChatBotOpen'
 
 type Props = {}
 

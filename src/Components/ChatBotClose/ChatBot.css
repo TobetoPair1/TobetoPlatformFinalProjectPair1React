@@ -1,0 +1,306 @@
+* {
+  box-sizing: border-box;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+iframe {
+  border: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 3px;
+}
+::-webkit-scrollbar-button {
+  width: 10px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #828282;
+  border: 0 #fff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-thumb:hover {
+  background: #93f;
+}
+::-webkit-scrollbar-track {
+  background: #e3e3e3;
+  border: 0 #fff;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #e3e3e3;
+}
+::-webkit-scrollbar-track:active {
+  background: #828282;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.exw-launcher-frame {
+  align-items: center;
+  -webkit-animation-delay: 0;
+  -moz-animation-delay: 0;
+  animation-delay: 0;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: slide-in;
+  -moz-animation-name: slide-in;
+  animation-name: slide-in;
+  background-color: #135afe;
+  background-color: transparent;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  margin: 0;
+  transition: all 0.2s;
+  width: 70px;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+.swing {
+  -webkit-animation-name: swing;
+  animation-name: swing;
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}
+.exw-widget-container div,
+.exw-widget-container iframe {
+  border: 0;
+  font-size: 100%;
+  margin-block-end: 0;
+  vertical-align: baseline;
+}
+/*! CSS Used keyframes */
+@-webkit-keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes swing {
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-transform-origin: top center;
+  }
+  20% {
+    -webkit-transform: rotate(15deg);
+  }
+  40% {
+    -webkit-transform: rotate(-10deg);
+  }
+  60% {
+    -webkit-transform: rotate(5deg);
+  }
+  80% {
+    -webkit-transform: rotate(-5deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@keyframes swing {
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/*! CSS Used from: https://tobeto.services.exairon.com/assets/widget/_exaWidget.css */
+.exw-launcher {
+  align-items: center;
+  background-color: #135afe;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  margin: 0;
+  width: 60px;
+}
+.exw-launcher:focus {
+  outline: none;
+}
+.exw-launcher:hover {
+  transform: scale(105%);
+}
+.exw-launcher img {
+  border-radius: 50%;
+  max-height: 70%;
+  object-fit: contain;
+  width: 70%;
+}
+#launcher {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.24);
+  margin: 5px;
+}
+.exw-open-launcher {
+  -moz-animation-delay: 0;
+  animation-delay: 0;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: rotation-rl;
+  -moz-animation-name: rotation-rl;
+  animation-name: rotation-rl;
+}
+.exw-open-launcher {
+  -webkit-animation-delay: 0;
+  -webkit-animation-duration: 0.5s;
+}
+#exw-launcher-frame-body {
+  background-color: transparent !important;
+  bottom: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+}
+/*! CSS Used keyframes */
+@-webkit-keyframes rotation-rl {
+  0% {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@-moz-keyframes rotation-rl {
+  0% {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@keyframes rotation-rl {
+  0% {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
+/*! CSS Used from: https://tobeto.services.exairon.com/assets/widget/_exaWidget.css */
+.exw-static-popup-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.exw-custom-popup-launcher-static .exw-popup-body {
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  font-family: var(--exairon-font-family);
+  font-size: 16px;
+  line-height: 19px;
+  max-width: 268px;
+  padding: 0 8px;
+  transition: all 0.2s ease-in-out;
+}
+.exw-custom-popup-launcher-static .exw-popup-body .exw-popup-message {
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 220px;
+  padding: 0 !important;
+  text-align: left;
+}
+.exw-custom-popup-launcher-static
+  .exw-popup-body
+  .exw-popup-message
+  .exw-static-popup-content {
+  margin: 0 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.exw-custom-popup-launcher-static
+  .exw-popup-body
+  .exw-popup-message
+  .exw-static-popup-content
+  :first-child {
+  color: inherit !important;
+}
+.exw-custom-popup-launcher-static
+  .exw-popup-body
+  .exw-popup-message
+  .exw-static-popup-content
+  > :first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+.exw-custom-popup-launcher-static .exw-popup-body .exw-popup-close {
+  color: red;
+  height: 15px;
+  transition: all 0.2s ease-in-out;
+  width: 15px;
+}
+.exw-custom-popup-launcher-static .exw-popup-body .exw-popup-close button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+}

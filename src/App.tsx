@@ -11,7 +11,7 @@ import { PlatformModel, platformActions } from './store/platform/platformSlice';
 import { useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
-
+//vercel test
 function App() {
   const platform: PlatformModel = useSelector((state: any) => state.platform);
 

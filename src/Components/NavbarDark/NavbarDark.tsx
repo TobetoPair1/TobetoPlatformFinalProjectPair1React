@@ -2,11 +2,12 @@ import { useSelector } from 'react-redux';
 import tokenService from '../../core/services/tokenService';
 import '../NavbarDark/NavbarDark.css';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserGetResponseModel } from '../../Models/Responses/User/UserGetResponseModel';
 import { PlatformModel } from '../../store/platform/platformSlice';
 
 const NavbarDark = () => {
+  const navigate = useNavigate();
   const path = useLocation().pathname;
   const platform: PlatformModel = useSelector((state: any) => state.platform);
 
@@ -178,7 +179,7 @@ const NavbarDark = () => {
                   'nav-link tnav-link ' +
                   (path == '/blog' ||
                   path == '/basinda-biz' ||
-                  path == '/takvim-anasayfa' ||
+                  path == '/anasayfa-takvim' ||
                   path == '/istanbul-kodluyor'
                     ? 'nav-active'
                     : '')
@@ -202,7 +203,7 @@ const NavbarDark = () => {
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  <Link className='m-0 nav-link ' to='/takvim-anasayfa'>
+                  <Link className='m-0 nav-link ' to='/anasayfa-takvim'>
                     Takvim
                   </Link>
                 </li>
@@ -463,7 +464,7 @@ const NavbarDark = () => {
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link className='m-0 nav-link ' to='/takvim-anasayfa'>
+                      <Link className='m-0 nav-link ' to='/anasayfa-takvim'>
                         Takvim
                       </Link>
                     </li>

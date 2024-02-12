@@ -101,6 +101,9 @@ const platformSlice = createSlice({
         isInstructor: false,
       };
     },
+    removePlatform:(state)=>{
+      state=initialState;
+    }
   },
   extraReducers(builder) {
     builder.addCase(getApplications.fulfilled, (state, action) => {

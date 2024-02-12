@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { UserGetResponseModel } from '../../Models/Responses/User/UserGetResponseModel';
+import { store } from '../../store/configureStore';
+import { authActions } from '../../store/auth/authSlice';
 import { PlatformModel } from '../../store/platform/platformSlice';
 
 type Props = {};
@@ -323,8 +324,8 @@ const NavBarLight = (props: Props) => {
                   />
                 </li>
                 <li>
-                  <Link className='dropdown-item profil-dropdown' to='#'>
-                    Oturumu Kapat{' '}
+                  <Link className='dropdown-item profil-dropdown' to='/giris' onClick={()=>store.dispatch(authActions.logout())}>
+                    Oturumu Kapat
                   </Link>
                 </li>
               </ul>

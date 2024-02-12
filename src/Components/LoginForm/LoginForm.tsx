@@ -4,6 +4,9 @@ import * as Yup from 'yup'
 import toastr from 'toastr';
 import AuthService from '../../Services/AuthService';
 import { HttpStatusCode } from 'axios';
+import { store } from '../../store/configureStore';
+import { authActions } from '../../store/auth/authSlice';
+import { platformActions } from '../../store/platform/platformSlice';
 
 
 interface FormValues {
@@ -33,6 +36,9 @@ const LoginForm = (props: Props) => {
   const token= await AuthService.login({email:values.email,password:values.password})
    if(token.status==HttpStatusCode.Ok){
     localStorage.setItem("token", JSON.stringify({...token.data}));
+    store.dispatch(authActions.login());
+    store.dispatch(platformActions.decodeToken());
+		store.dispatch(platformActions.getUser());
     navigate("/platform");
     toastr.success("Giriş başarılı.")
    }

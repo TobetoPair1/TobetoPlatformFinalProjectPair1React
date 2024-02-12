@@ -56,7 +56,6 @@ const Platform = (props: Props) => {
 
   useEffect(() => {
     if (platform.user.id != undefined) {
-      console.log(platform.user);
       OnUserLoad();
     }
   }, [platform.user]);

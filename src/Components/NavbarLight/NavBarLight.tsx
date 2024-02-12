@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { store } from '../../store/configureStore';
 import { authActions } from '../../store/auth/authSlice';
-import { PlatformModel } from '../../store/platform/platformSlice';
+import { PlatformModel, platformActions } from '../../store/platform/platformSlice';
 
 type Props = {};
 const NavBarLight = (props: Props) => {
+  const [openCanvas,setOpenCanvas]=useState(false);
   const platform: PlatformModel = useSelector((state: any) => state.platform);
 
   const user = platform?.user;
@@ -14,9 +15,18 @@ const NavBarLight = (props: Props) => {
   const path = useLocation().pathname;
 
   const [openProfileButton, setOpenButton] = useState(false);
+  const [openCanvasProfileButton, setCanvasOpenButton] = useState(false);
+
+  function OnClickLogoutButton(){
+    store.dispatch(platformActions.removePlatform());
+    store.dispatch(authActions.logout())
+  }
 
   const OnClickProfileButton = () => {
     setOpenButton(!openProfileButton);
+  };
+  const OnClickCanvasProfileButton = () => {
+    setCanvasOpenButton(!openCanvasProfileButton);
   };
 
   return (
@@ -99,6 +109,7 @@ const NavBarLight = (props: Props) => {
           data-bs-target='#offcanvasExample'
           aria-controls='offcanvasExample'
           className='btn p-0 d-xxl-none navbar-burger'
+          onClick={()=>setOpenCanvas(!openCanvas)}
         >
           <svg
             width={24}
@@ -192,7 +203,7 @@ const NavBarLight = (props: Props) => {
               <button
                 type='button'
                 className={
-                  'btn p-0 fw-normal b-r-35 text-end d-flex align-items-center' +
+                  'btn p-0 fw-normal b-r-35 text-end d-flex align-items-center ' +
                   (openProfileButton ? 'show' : '')
                 }
                 data-bs-toggle='dropdown'
@@ -297,7 +308,7 @@ const NavBarLight = (props: Props) => {
               </button>
               <ul
                 className={
-                  'profile dropdown-menu' + (openProfileButton ? 'show' : '')
+                  'profile dropdown-menu ' + (openProfileButton ? 'show' : '')
                 }
               >
                 <li>
@@ -324,7 +335,7 @@ const NavBarLight = (props: Props) => {
                   />
                 </li>
                 <li>
-                  <Link className='dropdown-item profil-dropdown' to='/giris' onClick={()=>store.dispatch(authActions.logout())}>
+                  <Link className='dropdown-item profil-dropdown' to='/giris' onClick={OnClickLogoutButton}>
                     Oturumu Kapat
                   </Link>
                 </li>
@@ -334,7 +345,7 @@ const NavBarLight = (props: Props) => {
         </div>
       </div>
       <div
-        className='d-xxl-none offcanvas offcanvas-start'
+        className={'d-xxl-none offcanvas offcanvas-start '+(openCanvas?"show":"")}
         tabIndex={-1}
         id='offcanvasExample'
         aria-labelledby='offcanvasExampleLabel'
@@ -417,6 +428,7 @@ const NavBarLight = (props: Props) => {
             className='btn-close'
             data-bs-dismiss='offcanvas'
             aria-label='Close'
+            onClick={()=>setOpenCanvas(!openCanvas)}
           />
         </div>
         <div className='offcanvas-body'>
@@ -474,9 +486,10 @@ const NavBarLight = (props: Props) => {
               <div className='btn-group header-avatar w-100'>
                 <button
                   type='button'
-                  className='btn p-1 fw-normal text-end d-flex align-items-center b-r-35 w-100 justify-content-between'
+                  className={'btn p-1 fw-normal text-end d-flex align-items-center b-r-35 w-100 justify-content-between '+(openCanvasProfileButton ? 'show' : '')}
                   data-bs-toggle='dropdown'
                   aria-expanded='false'
+                  onClick={OnClickCanvasProfileButton}
                 >
                   <div className='me-3'>
                     <p className='mb-0 small c-gray-3'>
@@ -558,7 +571,7 @@ const NavBarLight = (props: Props) => {
                   </div>
                 </button>
                 <ul
-                  className='dropdown-menu dd-bg'
+                  className={'dropdown-menu dd-bg '+(openCanvasProfileButton ? 'show' : '')}
                   style={{ borderWidth: '1px', borderColor: 'white' }}
                 >
                   <li>
@@ -575,8 +588,9 @@ const NavBarLight = (props: Props) => {
                       className='dropdown-item'
                       to='#'
                       style={{ color: 'white', fontSize: '14px' }}
+                      onClick={OnClickLogoutButton}
                     >
-                      Oturumu Kapat{' '}
+                      Oturumu Kapat
                     </Link>
                   </li>
                 </ul>
@@ -618,6 +632,7 @@ const NavBarLight = (props: Props) => {
           <div className='corp-list row g-8 mt-6' />
         </div>
       </div>
+      {openCanvas && <div className="offcanvas-backdrop fade show"></div>}
     </nav>
   );
 };

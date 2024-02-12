@@ -22,9 +22,8 @@ const authSlice = createSlice({
 			state.isAuthenticated = tokenService.hasToken();
 		},
 		logout: (state) => {
-			tokenService.removeToken();
-			store.dispatch(platformActions.removePlatform());
-			state.isAuthenticated = false;
+			tokenService.removeToken();			
+			state.isAuthenticated = false;			
 		}
 	},
 });

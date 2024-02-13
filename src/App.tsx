@@ -11,14 +11,16 @@ import { PlatformModel, platformActions } from './store/platform/platformSlice';
 import { useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
+import { authActions } from './store/auth/authSlice';
 function App() {
   const platform: PlatformModel = useSelector((state: any) => state.platform);
 
   async function OnPageLoad() {
     if (tokenService.hasToken()) {
+      store.dispatch(authActions.login());
       store.dispatch(platformActions.decodeToken());
       store.dispatch(platformActions.getUser());
-    }
+    }   
   }
 
   useEffect(() => {

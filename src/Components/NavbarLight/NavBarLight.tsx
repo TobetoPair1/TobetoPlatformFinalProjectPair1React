@@ -586,7 +586,7 @@ const NavBarLight = (props: Props) => {
                   <li>
                     <Link
                       className='dropdown-item'
-                      to='#'
+                      to='/giris'
                       style={{ color: 'white', fontSize: '14px' }}
                       onClick={OnClickLogoutButton}
                     >

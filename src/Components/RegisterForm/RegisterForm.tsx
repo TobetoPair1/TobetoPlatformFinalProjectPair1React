@@ -5,6 +5,9 @@ import * as Yup from 'yup'
 import AuthService from "../../Services/AuthService";
 import { HttpStatusCode } from "axios";
 import toastr from 'toastr';
+import { store } from "../../store/configureStore";
+import { authActions } from "../../store/auth/authSlice";
+import { platformActions } from "../../store/platform/platformSlice";
 
 interface FormValues {
     firstName: string
@@ -49,9 +52,12 @@ const RegisterForm = (props: Props) => {
         const token = await AuthService.register({ email: values.email, firstName: values.firstName, lastName: values.lastName, password: values.password })
 
         if (token.status == HttpStatusCode.Ok) {
-            localStorage.setItem("token", JSON.stringify({ ...token.data}));
+            localStorage.setItem("token", JSON.stringify({ ...token.data }));
+            store.dispatch(authActions.login());
+            store.dispatch(platformActions.decodeToken());
+            store.dispatch(platformActions.getUser());
             navigate("/platform");
-            toastr.success("Kayıt başarılı.")            
+            toastr.success("Kayıt başarılı.")
         }
         else {
             toastr.error("Kayıt olunamadı!");

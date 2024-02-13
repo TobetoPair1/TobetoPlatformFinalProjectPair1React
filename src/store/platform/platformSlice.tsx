@@ -102,7 +102,13 @@ const platformSlice = createSlice({
       };
     },
     removePlatform:(state)=>{
-      state=initialState;
+      state.announcements=initialState.announcements;
+      state.applications=initialState.applications;
+      state.courses=initialState.courses;
+      state.exams=initialState.exams;
+      state.surveys=initialState.surveys;
+      state.token=initialState.token;
+      state.user=initialState.user;
     }
   },
   extraReducers(builder) {

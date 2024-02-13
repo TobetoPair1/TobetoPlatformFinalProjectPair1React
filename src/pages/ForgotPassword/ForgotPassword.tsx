@@ -1,6 +1,15 @@
+import { useState } from "react";
+import { MailSendModel } from "../../Models/Requests/Mail/MailSendModel";
+import MailSenderService from "../../Services/MailSenderService";
 import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
+  const [mail, setMail] = useState("");
+  async function SendMail(){
+    const mailRequest: MailSendModel = {to: mail, subject: "Şifre Sıfırlama",body: "Şifremi unuttum linkine aşağıdan ulaşabilirsin \n"
+     + "http://localhost:3000/sifre-yenile?code=" + btoa(mail)};
+    await MailSenderService.SendMail(mailRequest);
+  }
   return (
     <>
       <div
@@ -65,12 +74,13 @@ const ForgotPassword = () => {
             <div className="py-12 px-12 bg-white shadow-lg text-center">
               <h3 className="mt-6 mb-8">Şifre Sıfırlama</h3>
               <input
+                onChange={(e) => setMail(e.target.value)}
                 className="form-control mt-6"
                 type="email"
                 placeholder="Şifre sıfırlama linki için e-posta adresinizi giriniz"
-                defaultValue="atillaagungorr@gmail.com"
+                required
               />
-              <button className="btn btn-primary w-100 mt-6">Gönder</button>
+              <button className="btn btn-primary w-100 mt-6" onClick={SendMail}>Gönder</button>
             </div>
           </div>
         </div>

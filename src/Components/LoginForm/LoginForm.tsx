@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 import toastr from 'toastr';
 import AuthService from '../../Services/AuthService';
@@ -65,9 +65,9 @@ const LoginForm = (props: Props) => {
           className="btn btn-light w-100 mt-6" 
           style={{backgroundColor: '#A628FF', color: '#fff', minWidth: '200px',lineHeight: '18px', borderRadius: '20px', fontWeight: 'bold'}} type='submit' >Giriş Yap</button>
         <label><small>
-          <p className="text-decoration-none text-muted mt-5 d-block" style={{ cursor: 'pointer' }}>Şifremi Unuttum</p>
+          <Link to="/sifremi-unuttum" className="text-decoration-none text-muted mt-5 d-block" style={{ cursor: 'pointer' }}>Şifremi Unuttum</Link>
         </small></label>
-        </Form>        
+        </Form>
       </Formik>
     )
   }

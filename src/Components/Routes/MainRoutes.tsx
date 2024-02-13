@@ -22,6 +22,7 @@ import CoursePage from '../../pages/CoursePage/CoursePage'
 import ChatBot from '../ChatBotClose/ChatBot'
 import ChatBotOpen from '../ChatBotOpen/ChatBotOpen'
 import MainCalendar from '../MainCalendar/MainCalendar'
+import ResetPassword from '../../pages/ResetPassword/ResetPassword'
 
 type Props = {}
 
@@ -47,6 +48,7 @@ const MainRoutes = (props: Props) => {
             <Route path="/egitimlerim" element={<ProtectedRoute><EducationPage/></ProtectedRoute> }></Route>
             <Route path="/kurs" element={<ProtectedRoute><CoursePage/></ProtectedRoute>}></Route>
             <Route path="/anasayfa-takvim" element={<MainCalendar/>}></Route>
+            <Route path="/sifre-yenile" element={<ResetPassword/>}></Route>
             <Route path="*" element={<NotFound/>}></Route>
           </Routes>
   )

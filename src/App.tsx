@@ -53,7 +53,8 @@ function App() {
         path == '/bireyler-icin' ||
         path == '/kurumlar-icin' ||
         path == '/blog' ||
-        path == '/anasayfa-takvim' ? (
+        path == '/anasayfa-takvim' ||
+        path == '/sifre-yenile' ? (
           <>
             <Banner />
             <NavbarDark />
@@ -73,7 +74,8 @@ function App() {
       path == '/bireyler-icin' ||
       path == '/kurumlar-icin' ||
       path == '/blog' ||
-      path == '/anasayfa-takvim' ? (
+      path == '/anasayfa-takvim' ||
+      path == '/sifre-yenile' ? (
         <DarkRoute />
       ) : (
         <LightRoute />

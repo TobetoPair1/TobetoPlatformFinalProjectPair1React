@@ -15,6 +15,8 @@ import tokenService from '../../core/services/tokenService';
 import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 import { jwtDecode } from 'jwt-decode';
 import { PageRequestModel } from '../../Models/Requests/PageRequestModel';
+import SurveyService from '../../Services/SurveyService';
+import { log } from 'console';
 
 const initialState: PlatformModel = {
   token: {} as DecodedTokenModel,
@@ -74,6 +76,21 @@ export const getAnnouncements = createAsyncThunk(
     return announcements;
   }
 );
+export const getSurveys = createAsyncThunk(
+  'platform/getSurveys',
+  async function GetSurveys(data: {
+    id: string;
+    pageRequest: PageRequestModel;
+  }) {
+    const surveys = (
+      await SurveyService.GetListByUserId(data.pageRequest, data.id)
+    ).data;
+    console.log(surveys);
+
+    return surveys;
+  }
+);
+
 const platformSlice = createSlice({
   name: 'platform',
   initialState: initialState,
@@ -101,9 +118,9 @@ const platformSlice = createSlice({
         isInstructor: false,
       };
     },
-    removePlatform:(state)=>{
-      state=initialState;
-    }
+    removePlatform: (state) => {
+      state = initialState;
+    },
   },
   extraReducers(builder) {
     builder.addCase(getApplications.fulfilled, (state, action) => {
@@ -118,6 +135,9 @@ const platformSlice = createSlice({
 
     builder.addCase(getAnnouncements.fulfilled, (state, action) => {
       state.announcements = action.payload;
+    });
+    builder.addCase(getSurveys.fulfilled, (state, action) => {
+      state.surveys = action.payload;
     });
   },
 });

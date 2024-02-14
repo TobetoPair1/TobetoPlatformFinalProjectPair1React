@@ -1,7 +1,7 @@
 let BASE_API_URL: string;
 
 const isWindows = () => {
-    return navigator.appVersion.indexOf("Win") !== -1;
+    return navigator.userAgent.indexOf("Win") !== -1;
 }
 
 if (isWindows()) {

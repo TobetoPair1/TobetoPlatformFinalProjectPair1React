@@ -6,13 +6,14 @@ import { CertificateAddRequestModel } from "../Models/Requests/Certificate/Certi
 import { CertificateGetResponseModel } from "../Models/Responses/Certificate/CertificateGetResponseModel";
 import { CertificateAddResponseModel } from "../Models/Responses/Certificate/CertificateAddResponseModel";
 import { CertificateDeleteResponseModel } from "../Models/Responses/Certificate/CertificateDeleteResponseModel";
+import { CertificateGetListResponseModel } from "../Models/Responses/Certificate/CertificateGetListResponseModel";
 
 const getListByUserIdUrl = "/getlistbyuserid";
 const apiUrl = "Certificates";
 
 class CertificateService {
-    getAll(pageRequest: PageRequestModel): Promise<AxiosResponse<Paginate<CertificateGetResponseModel>, any>> {
-        return axiosInstance.get<Paginate<CertificateGetResponseModel>>(apiUrl, { params: { ...pageRequest } });
+    getAll(pageRequest: PageRequestModel): Promise<AxiosResponse<Paginate<CertificateGetListResponseModel>, any>> {
+        return axiosInstance.get<Paginate<CertificateGetListResponseModel>>(apiUrl, { params: { ...pageRequest } });
     }
 
     add(request: CertificateAddRequestModel): Promise<AxiosResponse<CertificateAddResponseModel, any>> {
@@ -23,7 +24,7 @@ class CertificateService {
         return axiosInstance.delete(apiUrl + "/", { params: { Id: id } });
     }
 
-    getListByUserId(pageRequest: PageRequestModel, userId: string): Promise<AxiosResponse<Paginate<CertificateGetResponseModel>, any>> {
+    getListByUserId(pageRequest: PageRequestModel, userId: string): Promise<AxiosResponse<Paginate<CertificateGetListResponseModel>, any>> {
         return axiosInstance.get(apiUrl + getListByUserIdUrl, { params: { ...pageRequest, userId } });
     }
 }

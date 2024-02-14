@@ -1,24 +1,25 @@
+import { SkillGetListResponseModel } from './../Models/Responses/Skill/SkillGetListResponseModel';
+import { SkillAddRequestModel } from './../Models/Requests/Skill/SkillAddRequestModel';
 import { AxiosResponse } from "axios";
-import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { Paginate } from "../core/Models/Paginate";
-import { SkillGetListResponseModel } from "../Models/Responses/Skill/SkillGetListResponseModel";
 import axiosInstance from "../core/interceptors/axiosInceptor";
 import { SkillGetResponseModel } from "../Models/Responses/Skill/SkillGetResponseModel";
-import { SkillUpdateRequestModel } from "../Models/Requests/Skill/SkillUpdateRequestModel";
 import { SkillUpdateResponseModel } from "../Models/Responses/Skill/SkillUpdateResponseModel";
+import { BaseService } from "../core/services/baseService";
+import { SkillAddResponseModel } from "../Models/Responses/Skill/SkillAddResponseModel";
+import { SkillUpdateRequestModel } from "../Models/Requests/Skill/SkillUpdateRequestModel";
+import { PageRequestModel } from '../Models/Requests/PageRequestModel';
 
-const apiUrl="Skills"
-class SkillService{
-    getAll(pageRequest:PageRequestModel): Promise<AxiosResponse<Paginate<SkillGetListResponseModel>, any>> {
-		return axiosInstance.get<Paginate<SkillGetListResponseModel>>(apiUrl+"/GetAll",{params:{...pageRequest}});
+const getListByUserIdUrl="/getlistbyuserid"
+ class SkillService extends BaseService<Paginate<SkillGetResponseModel>,SkillGetResponseModel,SkillAddResponseModel,SkillAddRequestModel,SkillUpdateResponseModel,SkillUpdateRequestModel,null>{
+    constructor() {
+		super();
+		this.apiUrl = "Skills";
 	}
 
-	getById(id: string): Promise<AxiosResponse<SkillGetResponseModel, any>> {
-		return axiosInstance.get<SkillGetResponseModel>(apiUrl + "/Get",{params:{Id:id}});
-	}
-
-	update(request: SkillUpdateRequestModel,): Promise<AxiosResponse<SkillUpdateResponseModel, any>> {
-		return axiosInstance.put<SkillUpdateResponseModel>(apiUrl, request);
-	}
+    GetListByUserId(pageRequest:PageRequestModel, userId:string):Promise<AxiosResponse<Paginate<SkillGetListResponseModel>, any>>{
+        return axiosInstance.get(this.apiUrl+getListByUserIdUrl,{params:{...pageRequest, userId:userId}})
+    }
+    
 }
 export default new SkillService();

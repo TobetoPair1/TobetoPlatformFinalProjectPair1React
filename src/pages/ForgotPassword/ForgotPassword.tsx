@@ -2,13 +2,43 @@ import { useState } from "react";
 import { MailSendModel } from "../../Models/Requests/Mail/MailSendModel";
 import MailSenderService from "../../Services/MailSenderService";
 import "./ForgotPassword.css";
+import UserService from "../../Services/UserService";
+import { HttpStatusCode } from "axios";
+import toastr from "toastr";
+import ForgotPasswordService from "../../Services/ForgotPasswordService";
 
 const ForgotPassword = () => {
   const [mail, setMail] = useState("");
   async function SendMail(){
-    const mailRequest: MailSendModel = {to: mail, subject: "Şifre Sıfırlama",body: "Şifremi unuttum linkine aşağıdan ulaşabilirsin \n"
-     + "http://localhost:3000/sifre-yenile?code=" + btoa(mail)};
-    await MailSenderService.SendMail(mailRequest);
+    //user bilgisini çek
+    const userResponse=(await UserService.getByMail(mail));
+    let user;
+    if(userResponse.status==HttpStatusCode.Ok) user=userResponse.data;
+    else if(userResponse.status==HttpStatusCode.NoContent){      
+       toastr.warning("Kullanıcı kaydı yok!");
+       return;
+      }
+    else {      
+      toastr.error("Bir hata oluştu!");
+      return;
+    }    
+    //bir kod oluştur
+    const code=btoa(mail);
+    //kodu backende yaz userid ile eşleştir
+    const forgotPasswordResponse= await ForgotPasswordService.add({userId:user.id,code:code});
+    if(forgotPasswordResponse.status==HttpStatusCode.Ok)
+    {
+      //kod başarıyla backende yazılırsa kodu mail ile gönder
+    const mailRequest: MailSendModel = {to: mail, subject: "Şifre Sıfırlama",body: "Şifremi unuttum linkine aşağıdan ulaşabilirsin <br/>"
+    + "<a href='http://localhost:3000/sifre-yenile?code=" + code+"'>Şifreyi Yenile</a>"};
+    console.log(code);
+   await MailSenderService.SendMail(mailRequest);
+   toastr.success("E-posta adresinize bir şifre yenileme linki gönderildi.");
+    }
+    else{
+      toastr.error("Sunucuda hata oluştu tekrar deneyiniz.");
+    }
+    
   }
   return (
     <>

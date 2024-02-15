@@ -6,7 +6,7 @@ type Props = {
     courses:Paginate<CourseGetListResponseModel>
 }
 
-const EducatiostCourseCart = (props: Props) => {
+const EducationCourseCart = (props: Props) => {
     return (
         <>
         {props.courses?.items?.map((course)=>{
@@ -39,4 +39,4 @@ const EducatiostCourseCart = (props: Props) => {
     )
 }
 
-export default EducatiostCourseCart
+export default EducationCourseCart

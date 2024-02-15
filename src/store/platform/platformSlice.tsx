@@ -85,7 +85,6 @@ export const getSurveys = createAsyncThunk(
     const surveys = (
       await SurveyService.GetListByUserId(data.pageRequest, data.id)
     ).data;
-    console.log(surveys);
 
     return surveys;
   }

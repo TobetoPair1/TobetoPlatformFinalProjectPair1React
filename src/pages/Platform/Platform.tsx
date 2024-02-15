@@ -9,7 +9,7 @@ import { AnnouncementGetListResponseModel } from '../../Models/Responses/Announc
 import AnnouncementCard from '../../Components/Announcement/AnnouncementCard';
 import ApplicationForm from '../../Components/Application/ApplicationForm';
 import { ApplicationGetListResponseModel } from '../../Models/Responses/Application/ApplicationGetListResponseModel';
-import EducatiostCourseCart from '../../Components/EducationsCourseCart/EducatiostCourseCart';
+import EducatiostCourseCart from '../../Components/EducationCourseCart/EducationCourseCart';
 import { CourseGetListResponseModel } from '../../Models/Responses/Course/CourseGetListResponseModel';
 import { useSelector } from 'react-redux';
 import {

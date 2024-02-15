@@ -1,10 +1,32 @@
+import { ReactElement, useEffect, useState } from 'react';
 import CourseCart from '../../Components/CourseCart/CourseCart';
 import Filter from '../../Components/Filter/Filter';
+import CourseService from '../../Services/CourseService';
 import './Catalog.css';
+import { Paginate } from '../../core/Models/Paginate';
+import { CourseGetListResponseModel } from '../../Models/Responses/Course/CourseGetListResponseModel';
 
 type Props = {}
 
-const Catalog = (props: Props) => {
+const Catalog = (props: Props) => {  
+  const [courses,setCourses]=useState<Paginate<CourseGetListResponseModel>>();
+  async function GetCourses(page:number) {
+    setCourses((await CourseService.getAll({PageIndex:page,PageSize:12})).data)
+  }
+  function GetPageButtonList(){
+    if(courses?.pages){
+    let list:ReactElement[]=[];
+    for (let index = 0; index < courses.pages; index++) {      list.push(
+        <li key={index} className={"page-item "+(courses.index==index?"active":"")}><a onClick={()=>GetCourses(index)} rel="canonical" role="button" className="page-link" tabIndex={-1} aria-label="Page 1 is your current page" aria-current="page">{(index+1)}</a></li> 
+      )
+      
+    }
+    return list;
+    }
+  }
+  useEffect(()=>{
+    GetCourses(0);
+  },[])
   return (
    
           <div style={{marginTop: '70px', paddingTop: '70px'}}>
@@ -29,14 +51,10 @@ const Catalog = (props: Props) => {
                 <Filter/>
                 <div className="col-lg-9 col-md-8 col-12">
                   <div className="row gy-6 gx-3">
-                    <CourseCart/>
+                    <CourseCart courses={courses as Paginate<CourseGetListResponseModel>}/>
                     <ul className="pagination justify-content-center" role="navigation" aria-label="Pagination">
-                      <li className="page-item disabled"><a className="page-link " tabIndex={-1} role="button" aria-disabled="true" aria-label="Previous page" rel="prev" /></li>
-                      <li className="page-item active"><a rel="canonical" role="button" className="page-link" tabIndex={-1} aria-label="Page 1 is your current page" aria-current="page">1</a></li>
-                      <li className="page-item"><a rel="next" role="button" className="page-link" tabIndex={0} aria-label="Page 2">2</a></li>
-                      <li className="page-item"><a role="button" className="page-link" tabIndex={0} aria-label="Page 3">3</a></li>
-                      <li className="page-item"><a role="button" className="page-link" tabIndex={0} aria-label="Page 4">4</a></li>
-                      <li className="page-item"><a role="button" className="page-link" tabIndex={0} aria-label="Page 5">5</a></li>
+                      <li className="page-item disabled"><a className="page-link " tabIndex={-1} role="button" aria-disabled="true" aria-label="Previous page" rel="prev" /></li>                      
+                      {GetPageButtonList()}             
                       <li className="page-item"><a className="page-link" tabIndex={0} role="button" aria-disabled="false" aria-label="Next page" rel="next" /></li>
                     </ul>
                   </div>

@@ -1,11 +1,16 @@
-import React from 'react'
+import { Paginate } from '../../core/Models/Paginate'
+import { CourseGetListResponseModel } from '../../Models/Responses/Course/CourseGetListResponseModel'
 
-type Props = {}
+type Props = {
+  courses:Paginate<CourseGetListResponseModel>
+}
 
 const CourseCart = (props: Props) => {
   return (
-    <div className="col-lg-4 col-md-6 col-12 educard-mobile" style={{ position: 'relative', cursor: 'pointer' }}>
-      <div className="education-box-new fade-in "><img className="edubox-img" src="https://tobeto.s3.cloud.ngn.com.tr/ENK_36573_a8546fa0ff.jpg" alt="" />
+    <>
+    {
+      props.courses?.items?.map((item)=><div key={item.id} className="col-lg-4 col-md-6 col-12 educard-mobile" style={{ position: 'relative', cursor: 'pointer' }}>
+      <div className="education-box-new fade-in "><img className="edubox-img" src={item.imageUrl} alt="" />
         <div className="content">
           <div>
             <div className="property">
@@ -23,17 +28,20 @@ const CourseCart = (props: Props) => {
                     <rect width={16} height={16} fill="white" />
                   </clipPath>
                 </defs>
-              </svg><span className="pro">4s 14dk</span></div>
+              </svg><span className="pro">{item.estimatedTime}</span></div>
               <div><span className="pro" /></div>
             </div>
-            <div className="name">Dinle, Anla, İfade Et: Etkili İletişim Gelişim Yolculuğu</div>
+            <div className="name">{item.name}</div>
           </div>
         </div>
         <div className="prog-cont">
           <div className="entry-btn" />
         </div>
       </div>
-    </div>
+    </div>)
+    }
+    
+    </>
   )
 }
 

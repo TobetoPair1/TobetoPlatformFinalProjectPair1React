@@ -5,7 +5,7 @@
     height: 100%;
     position: fixed;
     background: rgba(35, 35, 35, 0.4);
-    z-index: 10;
+    z-index: 100;
 }
 
 .myoverlay__inner {

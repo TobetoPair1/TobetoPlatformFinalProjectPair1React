@@ -79,7 +79,7 @@ const Profile = (props: Props) => {
       <div className='container' style={{ minHeight: '100vh' }}>
         <div className='row ' style={{ marginTop: '1.5em' }}>
           <div className='d-flex justify-content-end'>
-          <Link className="cv-edit-icon" to="/profilim/kisisel-bilgilerim"/>
+          <Link className="cv-edit-icon" to="/profilim/profilimi-duzenle/kisisel-bilgilerim"/>
             <div className='dropdown'>
               <button
                 type='button'

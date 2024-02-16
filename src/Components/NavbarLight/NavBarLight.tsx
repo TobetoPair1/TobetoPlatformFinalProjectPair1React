@@ -317,7 +317,7 @@ const NavBarLight = (props: Props) => {
                 <li>
                   <Link
                     className='dropdown-item profil-dropdown'
-                    to='/profilim/kisisel-bilgilerim'
+                    to='/profilim/profilimi-duzenle/kisisel-bilgilerim'
                   >
                     Profil Bilgileri
                   </Link>

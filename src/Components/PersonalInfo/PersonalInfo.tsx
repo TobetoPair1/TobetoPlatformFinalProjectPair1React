@@ -1,5 +1,4 @@
 import { PersonalInfoGetResponseModel } from '../../Models/Responses/PersonalInfo/PersonalInfoGetResponseModel';
-//import './PersonalInfo.css';
 
 type props = {
   personalInfo: PersonalInfoGetResponseModel;

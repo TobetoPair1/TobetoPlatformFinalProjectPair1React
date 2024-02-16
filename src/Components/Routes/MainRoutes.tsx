@@ -19,8 +19,6 @@ import BlogPage from '../Blog/BlogPage';
 import EducationPage from '../../pages/EducationPage/EducationPage';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import CoursePage from '../../pages/CoursePage/CoursePage';
-import ChatBot from '../ChatBotClose/ChatBot';
-import ChatBotOpen from '../ChatBotOpen/ChatBotOpen';
 import MainCalendar from '../MainCalendar/MainCalendar';
 import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 import PersonalInformation from '../../pages/PersonalInformation/PersonalInformation';
@@ -28,6 +26,17 @@ import PersonalInformation from '../../pages/PersonalInformation/PersonalInforma
 type Props = {};
 
 const MainRoutes = (props: Props) => {
+  const basePath = '/profilim/profilimi-duzenle/';
+  const protectedRouteWithPersonalInfo = (path: string) => (
+    <Route
+      path={basePath + path}
+      element={
+        <ProtectedRoute>
+          <PersonalInformation />
+        </ProtectedRoute>
+      }
+    />
+  );
   return (
     <Routes>
       <Route path='/' element={<Homepage />}></Route>
@@ -92,14 +101,16 @@ const MainRoutes = (props: Props) => {
       ></Route>
       <Route path='/anasayfa-takvim' element={<MainCalendar />}></Route>
       <Route path='/sifre-yenile' element={<ResetPassword />}></Route>
-      <Route
-        path='/profilim/kisisel-bilgilerim'
-        element={
-          <ProtectedRoute>
-            <PersonalInformation />
-          </ProtectedRoute>
-        }
-      ></Route>
+
+      {protectedRouteWithPersonalInfo('kisisel-bilgilerim')}
+      {protectedRouteWithPersonalInfo('deneyimlerim')}
+      {protectedRouteWithPersonalInfo('egitim-hayatim')}
+      {protectedRouteWithPersonalInfo('yetkinliklerim')}
+      {protectedRouteWithPersonalInfo('sertifikalarim')}
+      {protectedRouteWithPersonalInfo('medya-hesaplarim')}
+      {protectedRouteWithPersonalInfo('yabanci-dil')}
+      {protectedRouteWithPersonalInfo('ayarlar')}
+
       <Route path='*' element={<NotFound />}></Route>
     </Routes>
   );

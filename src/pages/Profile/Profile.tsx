@@ -237,7 +237,14 @@ const Profile = (props: Props) => {
                     <span>Hakkımda</span>
                     <hr />
                   </div>
-                  <div>{personalInfo?.about}</div>
+                  <div className='about'>
+                  {personalInfo?.about ? (
+                        <div>Kendini kısaca anlat.</div>
+                      )
+                     : (
+                      <div>Kendini kısaca anlat.</div>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className='col-12'>

@@ -1,4 +1,5 @@
 import './IK.css';
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -627,7 +628,7 @@ const IK = () => {
               <div className="overlay-bg" />
             </div>
           </div>
-          <div className="showMoreBtn mb-8">Daha Fazla Göster</div>
+          <Link className="showMoreBtn mb-8" to='/istanbul-kodluyor/galeri'>Daha Fazla Göster</Link>
         </div>
       </div>
       <div className="row bg-darkblue">

@@ -423,8 +423,8 @@ const Platform = (props: Props) => {
                           platform.announcements as Paginate<AnnouncementGetListResponseModel>
                         }
                       />
-
-                      <div className='showMoreBtn'>Daha Fazla Göster</div>
+                      {platform?.announcements?.count>3?<div className='showMoreBtn'>Daha Fazla Göster</div>:null}
+                      
                     </div>
                   </div>
                   <div
@@ -443,7 +443,7 @@ const Platform = (props: Props) => {
                           platform.surveys as Paginate<SurveyGetListResponseModel>
                         }
                       />
-                      <div className='showMoreBtn'>Daha Fazla Göster</div>
+                      {platform?.surveys?.count>3?<div className='showMoreBtn'>Daha Fazla Göster</div>:null}
                     </div>
                   </div>
                   <div
@@ -464,7 +464,7 @@ const Platform = (props: Props) => {
             </div>
           </div>
         </section>
-        <section className='my-2'>
+        {platform?.exams?.count>0?<section className='my-2'>
           <div className='container'>
             <div className='row cv-box cv-padding'>
               <div className='col-12 position-relative'>
@@ -477,7 +477,8 @@ const Platform = (props: Props) => {
               </div>
             </div>
           </div>
-        </section>
+        </section>:null}
+        
         <section className='my-2'>
           <div className='container'>
             <div className='new-packs my-20'>

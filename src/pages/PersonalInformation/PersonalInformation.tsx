@@ -38,7 +38,6 @@ const PersonalInformation = () => {
 
   useEffect(() => {
     fetchUserData();
-    console.log(path);
   }, []);
 
   return (

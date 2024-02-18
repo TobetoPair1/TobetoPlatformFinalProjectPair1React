@@ -49,7 +49,7 @@ async function CheckTokenDate() {
 
   return (
     <>
-      {path != '/istanbul-kodluyor' && path != '/kurs' ? (
+      {path != '/istanbul-kodluyor' && path != '/kurs' && path != '/istanbul-kodluyor/galeri' ? (
         path == '/' ||
         path == '/hakkimizda' ||
         path == '/katalog' ||

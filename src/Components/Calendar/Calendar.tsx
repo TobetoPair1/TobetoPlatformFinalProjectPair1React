@@ -9,7 +9,7 @@ type Props = {};
 
 const Calendar = (props: Props) => {
   const tarih=new Date(Date.now());
-  const tarihString=tarih.getFullYear()+"-0"+(tarih.getMonth()+1)+"-0"+tarih.getDate();
+  const tarihString=tarih.getFullYear()+"-"+(tarih.getMonth().toString().length<2?0:"")+(tarih.getMonth()+1)+"-"+(tarih.getDate().toString().length<2?0:"")+tarih.getDate();
   const [events, setEvents] = useState<any>([
     { title: 'Course Name', start:tarihString, time: "09:00", course: "Course", instructor: "Instructor",color:'ocean',borderColor:'blue'}
   ]);

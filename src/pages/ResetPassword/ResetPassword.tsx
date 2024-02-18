@@ -61,6 +61,9 @@ const ResetPassword = (props: Props) => {
         navigate("/");
       }
     }    
+    else{
+      navigate("/");
+    }
   }
   useEffect(()=>{
     OnPageLoad();

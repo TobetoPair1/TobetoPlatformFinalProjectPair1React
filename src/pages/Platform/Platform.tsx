@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Platform.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Paginate } from '../../core/Models/Paginate';
 import { ExamGetListResponseModel } from '../../Models/Responses/Exam/ExamGetListResponseModel';
 import Exam from '../../Components/Exam/Exam';
@@ -445,9 +445,8 @@ const Platform = (props: Props) => {
                       />
                       {platform?.surveys?.count>3?<div className='showMoreBtn'>Daha Fazla Göster</div>:null}
                     </div>
-                  </div>
-                  <div
-                    className='tab-pane fade'
+                    {platform?.surveys?.count<1 &&<div
+                    className={'tab-pane fade '+(platform?.surveys?.count<1?"active show":"")}
                     id='mySurvey-tab-pane'
                     role='tabpanel'
                     aria-labelledby='mySurvey-tab'
@@ -458,7 +457,9 @@ const Platform = (props: Props) => {
                         <p>Atanmış herhangi bir anketiniz bulunmamaktadır</p>
                       </div>
                     </div>
+                  </div>}
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -485,18 +486,19 @@ const Platform = (props: Props) => {
               <div className='package-card'>
                 <div className='details pack-bg-2'>
                   <h1>
-                    <br /> Profilini oluştur{' '}
+                    <br /> Profilini oluştur
                   </h1>
-                  <button
+                  <Link
                     className='btn btn-primary w-100 '
                     style={{
                       backgroundColor: '#a3f',
                       border: 'none',
                       borderRadius: '30px',
                     }}
+                    to={"/profilim/profilimi-duzenle/kisisel-bilgilerim"}
                   >
                     <b>Başla</b>
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className='package-card'>
@@ -504,34 +506,35 @@ const Platform = (props: Props) => {
                   <h1 className='mb-6'>
                     <br /> Kendini değerlendir{' '}
                   </h1>
-                  <button
+                  <Link
                     className='btn btn-primary w-100 '
                     style={{
                       backgroundColor: '#a3f',
                       border: 'none',
                       borderRadius: '30px',
                     }}
+                    to={"/degerlendirmeler"}
                   >
                     <b>Başla</b>
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className='package-card'>
                 <div className='details pack-bg-1'>
-                  <h1 className='mb-6'>
-                    {' '}
-                    <br /> Öğrenmeye başla{' '}
+                  <h1 className='mb-6'>                    
+                    <br /> Öğrenmeye başla
                   </h1>
-                  <button
+                  <Link
                     className='btn btn-primary w-100 '
                     style={{
                       backgroundColor: '#a3f',
                       border: 'none',
                       borderRadius: '30px',
                     }}
+                    to={"/katalog"}
                   >
                     <b>Başla</b>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,12 +1,36 @@
+import { ReactElement, useEffect, useState } from 'react';
 import { PersonalInfoGetResponseModel } from '../../Models/Responses/PersonalInfo/PersonalInfoGetResponseModel';
+import DistrictService from '../../Services/DistrictService';
+import { District } from '../../Models/Responses/District/DistrictResponseModel';
 
 type props = {
   personalInfo: PersonalInfoGetResponseModel;
 };
 
 function PersonalInfo(props: props) {
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfoGetResponseModel>();
+  const [districts, setDistricts] = useState<District[]>();
+  function convertDateFormat(dateString: string, fromFormat: string, toFormat: string) {
+    const [datePart] = dateString.split('T'); // "T" karakterinden önceki kısmı al
+    const [year, month, day] = datePart.split(fromFormat); // Verilen formata göre parçala
+    const formattedDate = `${year}${toFormat}${month}${toFormat}${day}`; // Yeni formata göre birleştir
+    return formattedDate;
+  }
+  function GetDistricts() {
+    DistrictService.getDistricts(personalInfo?.city ? personalInfo.city : "").then(result =>
+      setDistricts(result.data.data[0].districts)
+    );
+  }
+  useEffect(() => {
+    setPersonalInfo(props.personalInfo);
+  }, [props.personalInfo])
+  useEffect(() => {
+    GetDistricts();
+  }, [personalInfo?.city])
   return (
+
     <form action='#' data-hs-cf-bound='true'>
+
       <div className='row mb-2'>
         <div className='col-12 mb-6 text-center'>
           <div className='profile-photo mx-auto'>
@@ -216,7 +240,8 @@ function PersonalInfo(props: props) {
             name='name'
             className='form-control tobeto-input'
             type='text'
-            value={props.personalInfo?.firstName}
+            value={personalInfo?.firstName}
+            onChange={(e) => setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), firstName: e.target.value })}
           />
         </div>
         <div className='col-12 col-md-6 mb-6'>
@@ -225,7 +250,8 @@ function PersonalInfo(props: props) {
             name='surname'
             className='form-control tobeto-input'
             type='text'
-            value={props.personalInfo?.lastName}
+            value={personalInfo?.lastName}
+            onChange={(e) => setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), lastName: e.target.value })}
           />
         </div>
         <div className='col-12 col-md-6 mb-6'>
@@ -491,7 +517,7 @@ function PersonalInfo(props: props) {
                   src='https://purecatamphetamine.github.io/country-flag-icons/3x2/TR.svg'
                 />
               </div>
-            
+
             </div>
             <input
               type='tel'
@@ -500,7 +526,8 @@ function PersonalInfo(props: props) {
               id='phoneNumber'
               name='phoneNumber'
               className='PhoneInputInput'
-              value={props.personalInfo?.phoneNumber}
+              value={personalInfo?.phoneNumber}
+              onChange={(e) => setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), phoneNumber: e.target.value })}
             />
           </div>
         </div>
@@ -511,7 +538,8 @@ function PersonalInfo(props: props) {
             max='2024-01-029'
             className='form-control tobeto-input'
             type='date'
-            value={new Date(props.personalInfo?.birthDate).toLocaleDateString()}
+            value={personalInfo?.birthDate ? convertDateFormat(personalInfo.birthDate, "-", "-") : "0000-01-01"}
+            onChange={(e) => setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), birthDate: e.target.value })}
           />
         </div>
         <div className='col-12 col-md-6 mb-6'>
@@ -519,8 +547,7 @@ function PersonalInfo(props: props) {
           <input
             name='identifier'
             className='form-control tobeto-input mb-2'
-            type='number'
-            value={props.personalInfo?.identityNumber}
+            value={personalInfo?.identityNumber}
           />
           <span
             className='text-danger'
@@ -536,7 +563,7 @@ function PersonalInfo(props: props) {
             className='form-control tobeto-input'
             type='text'
             disabled
-            value={props.personalInfo?.email}
+            value={personalInfo?.email}
           />
         </div>
         <div className='col-12 mb-6'>
@@ -545,7 +572,7 @@ function PersonalInfo(props: props) {
             name='country'
             className='form-control tobeto-input'
             type='text'
-            value={props.personalInfo?.country}
+            value={personalInfo?.country}
           />
         </div>
         <div className='col-12 col-md-6 mb-6'>
@@ -554,90 +581,92 @@ function PersonalInfo(props: props) {
             name='city'
             className='form-select tobeto-input'
             aria-label='Şehir seç'
-            value={props.personalInfo?.city}
+            value={personalInfo?.city}
+            onChange={(e) => setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), city: e.target.value })}
           >
             <option value=''>İl Seçiniz</option>
-            <option value={4}>Adana</option>
-            <option value={5}>Adıyaman</option>
-            <option value={6}>Afyonkarahisar</option>
-            <option value={7}>Ağrı</option>
-            <option value={71}>Aksaray</option>
-            <option value={8}>Amasya</option>
-            <option value={9}>Ankara</option>
-            <option value={10}>Antalya</option>
-            <option value={78}>Ardahan</option>
-            <option value={11}>Artvin</option>
-            <option value={12}>Aydın</option>
-            <option value={13}>Balıkesir</option>
-            <option value={77}>Bartın</option>
-            <option value={75}>Batman</option>
-            <option value={72}>Bayburt</option>
-            <option value={14}>Bilecik</option>
-            <option value={15}>Bingöl</option>
-            <option value={16}>Bitlis</option>
-            <option value={17}>Bolu</option>
-            <option value={18}>Burdur</option>
-            <option value={19}>Bursa</option>
-            <option value={20}>Çanakkale</option>
-            <option value={21}>Çankırı</option>
-            <option value={22}>Çorum</option>
-            <option value={23}>Denizli</option>
-            <option value={24}>Diyarbakır</option>
-            <option value={84}>Düzce</option>
-            <option value={25}>Edirne</option>
-            <option value={26}>Elazığ</option>
-            <option value={27}>Erzincan</option>
-            <option value={28}>Erzurum</option>
-            <option value={29}>Eskişehir</option>
-            <option value={30}>Gaziantep</option>
-            <option value={31}>Giresun</option>
-            <option value={32}>Gümüşhane</option>
-            <option value={33}>Hakkari</option>
-            <option value={34}>Hatay</option>
-            <option value={79}>Iğdır</option>
-            <option value={35}>Isparta</option>
-            <option value={37}>İstanbul</option>
-            <option value={38}>İzmir</option>
-            <option value={49}>Kahramanmaraş</option>
-            <option value={81}>Karabük</option>
-            <option value={73}>Karaman</option>
-            <option value={39}>Kars</option>
-            <option value={40}>Kastamonu</option>
-            <option value={41}>Kayseri</option>
-            <option value={82}>Kilis</option>
-            <option value={74}>Kırıkkale</option>
-            <option value={42}>Kırklareli</option>
-            <option value={43}>Kırşehir</option>
-            <option value={44}>Kocaeli</option>
-            <option value={45}>Konya</option>
-            <option value={46}>Kütahya</option>
-            <option value={47}>Malatya</option>
-            <option value={48}>Manisa</option>
-            <option value={50}>Mardin</option>
-            <option value={36}>Mersin</option>
-            <option value={51}>Muğla</option>
-            <option value={52}>Muş</option>
-            <option value={53}>Nevşehir</option>
-            <option value={54}>Niğde</option>
-            <option value={55}>Ordu</option>
-            <option value={83}>Osmaniye</option>
-            <option value={56}>Rize</option>
-            <option value={57}>Sakarya</option>
-            <option value={58}>Samsun</option>
-            <option value={66}>Şanlıurfa</option>
-            <option value={59}>Siirt</option>
-            <option value={60}>Sinop</option>
-            <option value={61}>Sivas</option>
-            <option value={76}>Şırnak</option>
-            <option value={62}>Tekirdağ</option>
-            <option value={63}>Tokat</option>
-            <option value={64}>Trabzon</option>
-            <option value={65}>Tunceli</option>
-            <option value={67}>Uşak</option>
-            <option value={68}>Van</option>
-            <option value={80}>Yalova</option>
-            <option value={69}>Yozgat</option>
-            <option value={70}>Zonguldak</option>
+            <option value="Adana">Adana</option>
+            <option value="Adıyaman">Adıyaman</option>
+            <option value="Afyonkarahisar">Afyonkarahisar</option>
+            <option value="Ağrı">Ağrı</option>
+            <option value="Aksaray">Aksaray</option>
+            <option value="Amasya">Amasya</option>
+            <option value="Ankara">Ankara</option>
+            <option value="Antalya">Antalya</option>
+            <option value="Ardahan">Ardahan</option>
+            <option value="Artvin">Artvin</option>
+            <option value="Aydın">Aydın</option>
+            <option value="Balıkesir">Balıkesir</option>
+            <option value="Bartın">Bartın</option>
+            <option value="Batman">Batman</option>
+            <option value="Bayburt">Bayburt</option>
+            <option value="Bilecik">Bilecik</option>
+            <option value="Bingöl">Bingöl</option>
+            <option value="Bitlis">Bitlis</option>
+            <option value="Bolu">Bolu</option>
+            <option value="Burdur">Burdur</option>
+            <option value="Bursa">Bursa</option>
+            <option value="Çanakkale">Çanakkale</option>
+            <option value="Çankırı">Çankırı</option>
+            <option value="Çorum">Çorum</option>
+            <option value="Denizli">Denizli</option>
+            <option value="Diyarbakır">Diyarbakır</option>
+            <option value="Düzce">Düzce</option>
+            <option value="Edirne">Edirne</option>
+            <option value="Elazığ">Elazığ</option>
+            <option value="Erzincan">Erzincan</option>
+            <option value="Erzurum">Erzurum</option>
+            <option value="Eskişehir">Eskişehir</option>
+            <option value="Gaziantep">Gaziantep</option>
+            <option value="Giresun">Giresun</option>
+            <option value="Gümüşhane">Gümüşhane</option>
+            <option value="Hakkari">Hakkari</option>
+            <option value="Hatay">Hatay</option>
+            <option value="Iğdır">Iğdır</option>
+            <option value="Isparta">Isparta</option>
+            <option value="İstanbul">İstanbul</option>
+            <option value="İzmir">İzmir</option>
+            <option value="Kahramanmaraş">Kahramanmaraş</option>
+            <option value="Karabük">Karabük</option>
+            <option value="Karaman">Karaman</option>
+            <option value="Kars">Kars</option>
+            <option value="Kastamonu">Kastamonu</option>
+            <option value="Kayseri">Kayseri</option>
+            <option value="Kilis">Kilis</option>
+            <option value="Kırıkkale">Kırıkkale</option>
+            <option value="Kırklareli">Kırklareli</option>
+            <option value="Kırşehir">Kırşehir</option>
+            <option value="Kocaeli">Kocaeli</option>
+            <option value="Konya">Konya</option>
+            <option value="Kütahya">Kütahya</option>
+            <option value="Malatya">Malatya</option>
+            <option value="Manisa">Manisa</option>
+            <option value="Mardin">Mardin</option>
+            <option value="Mersin">Mersin</option>
+            <option value="Muğla">Muğla</option>
+            <option value="Muş">Muş</option>
+            <option value="Nevşehir">Nevşehir</option>
+            <option value="Niğde">Niğde</option>
+            <option value="Ordu">Ordu</option>
+            <option value="Osmaniye">Osmaniye</option>
+            <option value="Rize">Rize</option>
+            <option value="Sakarya">Sakarya</option>
+            <option value="Samsun">Samsun</option>
+            <option value="Şanlıurfa">Şanlıurfa</option>
+            <option value="Siirt">Siirt</option>
+            <option value="Sinop">Sinop</option>
+            <option value="Sivas">Sivas</option>
+            <option value="Şırnak">Şırnak</option>
+            <option value="Tekirdağ">Tekirdağ</option>
+            <option value="Tokat">Tokat</option>
+            <option value="Trabzon">Trabzon</option>
+            <option value="Tunceli">Tunceli</option>
+            <option value="Uşak">Uşak</option>
+            <option value="Van">Van</option>
+            <option value="Yalova">Yalova</option>
+            <option value="Yozgat">Yozgat</option>
+            <option value="Zonguldak">Zonguldak</option>
+
           </select>
         </div>
         <div className='col-12 col-md-6 mb-6'>
@@ -646,9 +675,12 @@ function PersonalInfo(props: props) {
             name='district'
             className='form-select tobeto-input'
             aria-label='İlçe'
-            value={props.personalInfo?.district}
+            value={personalInfo?.district}
           >
             <option value=''>İlçe Seçiniz</option>
+            {districts?.map((district, index) =>
+              <option value={index}>{district.name}</option>
+            )}
           </select>
         </div>
         <div className='col-12 mb-6'>

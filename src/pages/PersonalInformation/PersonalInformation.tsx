@@ -30,8 +30,6 @@ const PersonalInformation = () => {
       platform.user.id
     );
     if (personalInfoResponse.status == HttpStatusCode.Ok) {
-      console.log(personalInfoResponse.data);
-
       setPersonalInfo(personalInfoResponse.data);
     }
   };

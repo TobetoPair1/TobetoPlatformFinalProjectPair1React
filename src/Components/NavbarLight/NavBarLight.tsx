@@ -35,7 +35,7 @@ const NavBarLight = (props: Props) => {
   return (
     <nav className='position-relative navbar navbar-expand-xxl py-2 bg-white'>
       <div className='container-fluid'>
-        <Link to='#'>
+        <Link to='/platform'>
           <span
             style={{
               boxSizing: 'border-box',
@@ -200,7 +200,7 @@ const NavBarLight = (props: Props) => {
               className='mx-3 align-items-center d-flex align-items-center'
               style={{ gap: '1em' }}
             >
-              <span className='tbt-gradient' />
+              <Link className='tbt-gradient' to={"/"}></Link>
             </div>
             <div className='btn-group header-avatar'>
               <button
@@ -447,19 +447,19 @@ const NavBarLight = (props: Props) => {
           <div>
             <ul className='nav flex-column'>
               <li className='nav-item'>
-                <Link className='nav-link' to='#'>
+                <Link className='nav-link' to='/platform'>
                   Anasayfa
                 </Link>
-                <Link className='nav-link' to='#'>
+                <Link className='nav-link' to='/degerlendirmeler'>
                   Değerlendirmeler
                 </Link>
-                <Link className='nav-link' to='#'>
+                <Link className='nav-link' to='/profilim'>
                   Profilim
                 </Link>
-                <Link className='nav-link' to='#'>
+                <Link className='nav-link' to='/katalog'>
                   Katalog
                 </Link>
-                <Link className='nav-link' to='#'>
+                <Link className='nav-link' to='/takvim'>
                   Takvim
                 </Link>
               </li>
@@ -467,7 +467,7 @@ const NavBarLight = (props: Props) => {
           </div>
           <div className='mt-auto '>
             <div className='my-3 py-3 border-top border-light align-items-center d-flex align-items-center'>
-              <Link className='text-decoration-none c-gray-3 mx-3' to='#'>
+              <Link className='text-decoration-none c-gray-3 mx-3' to='/'>
                 Tobeto
                 <svg
                   width={20}

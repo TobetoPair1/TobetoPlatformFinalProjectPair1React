@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { LoginRequestModel } from '../Models/Requests/Auth/LoginRequestModel';
 import { RegisterRequestModel } from '../Models/Requests/Auth/RegisterRequestModel';
 import { TokenModel } from '../Models/Responses/Token/TokenModel';
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 import { ChangePasswordModel } from '../Models/Requests/Auth/ChangePasswordRequestModel';
 
 const login = 'Auths/login';

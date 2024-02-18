@@ -10,7 +10,7 @@ import { QuestionUpdateResponseModel } from '../Models/Responses/Question/Questi
 import { QuestionDeleteResponseModel } from '../Models/Responses/Question/QuestionDeleteResponseModel';
 import { PageRequestModel } from '../Models/Requests/PageRequestModel';
 import { AxiosResponse } from 'axios';
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 import { QuestionAssignToExamResponseModel } from '../Models/Responses/Question/QuestionAssignToExamResponseModel';
 
 const getListByExamIdUrl="/getlistbyexamid";

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { InstructorGetResponseModel } from "../Models/Responses/Instructor/InstructorGetResponseModel";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { InstructorUpdateRequestModel } from "../Models/Requests/Instructor/InstructorUpdateRequestModel";
 import { InstructorUpdateResponseModel } from "../Models/Responses/Instructor/InstructorUpdateResponseModel";
 import { PageRequestModel } from "../Models/Requests/PageRequestModel";

@@ -2,7 +2,7 @@ import { CourseGetListResponseModel} from '../Models/Responses/Course/CourseGetL
 import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { AxiosResponse } from "axios";
 import { Paginate } from "../core/Models/Paginate";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { BaseService } from "../core/services/baseService";
 import { CourseAddRequestModel } from '../Models/Requests/Course/CourseAddRequestModel';
 import { CourseAddResponseModel } from '../Models/Responses/Course/CourseAddResponseModel';

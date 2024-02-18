@@ -2,7 +2,7 @@ import { SkillGetListResponseModel } from './../Models/Responses/Skill/SkillGetL
 import { SkillAddRequestModel } from './../Models/Requests/Skill/SkillAddRequestModel';
 import { AxiosResponse } from "axios";
 import { Paginate } from "../core/Models/Paginate";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { SkillGetResponseModel } from "../Models/Responses/Skill/SkillGetResponseModel";
 import { SkillUpdateResponseModel } from "../Models/Responses/Skill/SkillUpdateResponseModel";
 import { BaseService } from "../core/services/baseService";

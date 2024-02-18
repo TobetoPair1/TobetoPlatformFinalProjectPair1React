@@ -8,7 +8,7 @@ import { ExamGetResponseModel } from "../Models/Responses/Exam/ExamGetResponseMo
 import { ExamUpdateResponseModel } from "../Models/Responses/Exam/ExamUpdateResponseModel";
 import { Paginate } from "../core/Models/Paginate";
 import { BaseService } from "../core/services/baseService";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { ExamAssignToUserRequestModel } from "../Models/Requests/Exam/ExamAssignToUserRequestModel";
 import { ExamAssignToUserResponseModel } from "../Models/Responses/Exam/ExamAssignToUserResponseModel";
 import { ExamDeleteResponseModel } from "../Models/Responses/Exam/ExamDeleteResponseModel";

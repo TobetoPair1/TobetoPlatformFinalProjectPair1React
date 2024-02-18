@@ -2,7 +2,7 @@ import { ForeignLanguageAddResponseModel } from './../Models/Responses/ForeignLa
 import { AxiosResponse } from "axios";
 import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { Paginate } from "../core/Models/Paginate";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { ForeignLanguageAddRequestModel } from '../Models/Requests/ForeignLanguage/ForeignLanguageAddRequestModel';
 import { ForeignLanguageGetListResponseModel } from '../Models/Responses/ForeignLanguage/ForeignLanguageGetListResponseModel';
 

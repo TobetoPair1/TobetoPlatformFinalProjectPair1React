@@ -5,7 +5,7 @@ import { PersonalInfoGetResponseModel } from '../Models/Responses/PersonalInfo/P
 import { PersonalInfoUpdateResponseModel } from '../Models/Responses/PersonalInfo/PersonalInfoUpdateResponseModel';
 import { Paginate } from '../core/Models/Paginate';
 import { AxiosResponse } from 'axios';
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 
 const getByUserIdUrl = '/getbyuserid';
 const apiUrl = 'PersonalInfos';

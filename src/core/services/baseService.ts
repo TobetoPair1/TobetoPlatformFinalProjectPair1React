@@ -1,5 +1,5 @@
 import {AxiosResponse} from "axios";
-import axiosInstance from "../interceptors/axiosInceptor";
+import axiosInstance from "../interceptors/axiosInterceptor";
 import { PageRequestModel } from "../../Models/Requests/PageRequestModel";
 
 export class BaseService<

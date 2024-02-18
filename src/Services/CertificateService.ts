@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { Paginate } from "../core/Models/Paginate";
 import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { CertificateAddRequestModel } from "../Models/Requests/Certificate/CertificateAddRequestModel";

@@ -16,7 +16,6 @@ import { TokenModel } from '../../Models/Responses/Token/TokenModel';
 import { jwtDecode } from 'jwt-decode';
 import { PageRequestModel } from '../../Models/Requests/PageRequestModel';
 import SurveyService from '../../Services/SurveyService';
-import { log } from 'console';
 
 const initialState: PlatformModel = {
   token: {} as DecodedTokenModel,

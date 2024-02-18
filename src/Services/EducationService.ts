@@ -4,7 +4,7 @@ import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { EducationAddResponseModel } from "../Models/Responses/Education/EducationAddResponseModel";
 import { EducationGetListResponseModel } from "../Models/Responses/Education/EducationGetListResponseModel";
 import { Paginate } from "../core/Models/Paginate";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { EducationDeleteResponseModel } from "../Models/Responses/Education/EducationDeleteResponseModel";
 
 const getListByUserIdUrl="/getlistbyuserid"

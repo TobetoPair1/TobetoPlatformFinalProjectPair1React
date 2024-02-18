@@ -9,7 +9,7 @@ import { Paginate } from '../core/Models/Paginate';
 import { SessionUpdateResponseModel } from '../Models/Responses/Session/SessionUpdateResponseModel';
 import { PageRequestModel } from '../Models/Requests/PageRequestModel';
 import { AxiosResponse } from 'axios';
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 import { SessionAssignToInstructorRequestModel } from '../Models/Requests/Session/SessionAssignToInstructorRequestModel';
 import { SessionAssignToInstructorResponseModel } from '../Models/Responses/Session/SessionAssignToInstructorResponseModel';
 

@@ -1,7 +1,7 @@
 import { PageRequestModel } from "../Models/Requests/PageRequestModel";
 import { AxiosResponse } from "axios";
 import { Paginate } from "../core/Models/Paginate";
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 import { SocialMediaGetResponseModel } from "../Models/Responses/SocialMedia/SocialMediaGetResponseModel";
 import { SocialMediaAddRequestModel } from "../Models/Requests/SocialMedia/SocialMediaAddRequestModel";
 import { SocialMediaAddResponseModel } from "../Models/Responses/SocialMedia/SocialMediaAddResponseModel";

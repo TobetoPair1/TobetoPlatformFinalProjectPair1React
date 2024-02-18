@@ -14,12 +14,25 @@ import { useSelector } from 'react-redux';
 import { authActions } from './store/auth/authSlice';
 function App() {
   const platform: PlatformModel = useSelector((state: any) => state.platform);
+async function CheckTokenDate() {
+  if (platform.token.exp != undefined) {
+    const dateString = Date.now().toString();
+    const now = Number.parseInt(
+      dateString.substring(0, platform.token.exp.toString().length)
+    );
+    if (platform.token.exp <= now) {
+      store.dispatch(authActions.logout());
+      store.dispatch(platformActions.removePlatform());
+    }
+  }
+}
 
   async function OnPageLoad() {
     if (tokenService.hasToken()) {
       store.dispatch(authActions.login());
       store.dispatch(platformActions.decodeToken());
       store.dispatch(platformActions.getUser());
+      await CheckTokenDate();
     }   
   }
 
@@ -28,15 +41,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (platform.token.exp != undefined) {
-      const dateString = Date.now().toString();
-      const now = Number.parseInt(
-        dateString.substring(0, platform.token.exp.toString().length)
-      );
-      if (platform.token.exp <= now) {
-        tokenService.removeToken();
-      }
-    }
+    CheckTokenDate();
   });
 
   const path = useLocation().pathname;

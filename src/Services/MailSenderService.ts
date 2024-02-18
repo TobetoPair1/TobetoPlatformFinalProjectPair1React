@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 import { MailSendModel } from '../Models/Requests/Mail/MailSendModel';
 
 const mail = 'Mails';

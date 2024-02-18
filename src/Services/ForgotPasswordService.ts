@@ -1,6 +1,6 @@
 import { ForgotPasswordAddRequestModel } from './../Models/Requests/ForgotPassword/ForgotPasswordAddRequestModel';
 import { AxiosResponse } from "axios";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { ForgotPasswordAddResponseModel } from '../Models/Responses/ForgotPassword/ForgotPasswordAddResponseModel';
 import { ForgotPasswordGetResponseModel } from '../Models/Responses/ForgotPassword/ForgotPasswordGetResponseModel';
 

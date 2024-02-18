@@ -10,7 +10,7 @@ import { ApplicationGetResponseModel } from '../Models/Responses/Application/App
 import { ApplicationUpdateResponseModel } from '../Models/Responses/Application/ApplicationUpdateResponseModel';
 import { Paginate } from '../core/Models/Paginate';
 import { BaseService } from '../core/services/baseService';
-import axiosInstance from '../core/interceptors/axiosInceptor';
+import axiosInstance from '../core/interceptors/axiosInterceptor';
 import { ApplicationUserResponseModel } from '../Models/Responses/Application/ApplicationUserResponseModel';
 
 const getListByUserIdUrl = '/getlistbyuserid';

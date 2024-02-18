@@ -1,5 +1,5 @@
 import { SurveyAssignUserRequestModel } from './../Models/Requests/Survey/SurveyAssignUserRequestModel';
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { BaseService } from '../core/services/baseService';
 import { Paginate } from '../core/Models/Paginate';
 import { SurveyGetListResponseModel } from '../Models/Responses/Survey/SurveyGetListResponseModel';

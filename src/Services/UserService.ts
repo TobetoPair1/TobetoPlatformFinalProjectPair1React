@@ -1,7 +1,7 @@
 import { PageRequestModel } from './../Models/Requests/PageRequestModel';
 import { AxiosResponse } from "axios";
 import { Paginate } from "../core/Models/Paginate";
-import axiosInstance from "../core/interceptors/axiosInceptor";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 import { UserGetListResponseModel} from '../Models/Responses/User/UserGetListResponseModel';
 import { UserUpdateRequestModel } from '../Models/Requests/User/UserUpdateRequestModel';
 import { UserUpdateResponseModel } from '../Models/Responses/User/UserUpdateResponseModel';

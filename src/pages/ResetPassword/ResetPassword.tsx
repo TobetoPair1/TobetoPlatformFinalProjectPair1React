@@ -45,10 +45,7 @@ const ResetPassword = (props: Props) => {
     let userId:string;
     if(userResponse.status==HttpStatusCode.Ok){
       userId=userResponse.data.id;
-      const forgotPasswordResponse = await ForgotPasswordService.getByUserId(userId,code?code:"");
-      console.log(userId);  
-      console.log(code);  
-      console.log(forgotPasswordResponse.status);
+      const forgotPasswordResponse = await ForgotPasswordService.getByUserId(userId,code?code:"");      
       if(forgotPasswordResponse.status==HttpStatusCode.Ok){
         if(forgotPasswordResponse.data.code!=code){
           navigate("/")

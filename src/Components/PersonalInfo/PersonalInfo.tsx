@@ -16,17 +16,19 @@ function PersonalInfo(props: props) {
     const formattedDate = `${year}${toFormat}${month}${toFormat}${day}`; // Yeni formata göre birleştir
     return formattedDate;
   }
-  function GetDistricts() {
-    DistrictService.getDistricts(personalInfo?.city ? personalInfo.city : "").then(result =>
+  function GetDistricts(city:string) {
+    if(city!='')
+    DistrictService.getDistricts(city).then(result =>
       setDistricts(result.data.data[0].districts)
     );
+    else {
+      setDistricts([]);
+    }
   }
   useEffect(() => {
     setPersonalInfo(props.personalInfo);
   }, [props.personalInfo])
-  useEffect(() => {
-    GetDistricts();
-  }, [personalInfo?.city])
+  
   return (
 
     <form action='#' data-hs-cf-bound='true'>
@@ -582,7 +584,10 @@ function PersonalInfo(props: props) {
             className='form-select tobeto-input'
             aria-label='Şehir seç'
             value={personalInfo?.city}
-            onChange={(e) => setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), city: e.target.value })}
+            onChange={(e) => {
+              setPersonalInfo({ ...(personalInfo as PersonalInfoGetResponseModel), city: e.target.value });
+              GetDistricts(e.target.value);
+            }}
           >
             <option value=''>İl Seçiniz</option>
             <option value="Adana">Adana</option>

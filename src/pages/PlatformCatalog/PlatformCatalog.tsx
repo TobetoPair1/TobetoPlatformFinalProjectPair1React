@@ -2,13 +2,13 @@ import { ReactElement, useEffect, useState } from 'react';
 import CourseCart from '../../Components/CourseCart/CourseCart';
 import Filter from '../../Components/Filter/Filter';
 import CourseService from '../../Services/CourseService';
-import './Catalog.css';
+import './PlatformCatalog.css';
 import { Paginate } from '../../core/Models/Paginate';
 import { CourseGetListResponseModel } from '../../Models/Responses/Course/CourseGetListResponseModel';
 
 type Props = {}
 
-const Catalog = (props: Props) => {  
+const PlatformCatalog = (props: Props) => {  
   const [courses,setCourses]=useState<Paginate<CourseGetListResponseModel>>();
   async function GetCourses(page:number) {
     setCourses((await CourseService.getAll({PageIndex:page,PageSize:12})).data)
@@ -63,7 +63,7 @@ const Catalog = (props: Props) => {
                   <div className="row gy-6 gx-3">
                     <CourseCart courses={courses as Paginate<CourseGetListResponseModel>}/>
                     <ul className="pagination justify-content-center" role="navigation" aria-label="Pagination">
-                      <li className={"page-item "+(courses?.hasPrevious?"":"disabled")}><a className="page-link " tabIndex={-1} role="button" aria-disabled="true" aria-label="Previous page" rel="prev" onClick={previousPage}/></li>                      
+                    <li className={"page-item "+(courses?.hasPrevious?"":"disabled")}><a className="page-link " tabIndex={-1} role="button" aria-disabled="true" aria-label="Previous page" rel="prev" onClick={previousPage}/></li>                      
                       {GetPageButtonList()}             
                       <li className={"page-item "+(courses?.hasNext?"":"disabled")}><a className="page-link" tabIndex={0} role="button" aria-disabled="false" aria-label="Next page" rel="next" onClick={nextPage}/></li>
                     </ul>
@@ -75,4 +75,4 @@ const Catalog = (props: Props) => {
   )
 }
 
-export default Catalog;
+export default PlatformCatalog;

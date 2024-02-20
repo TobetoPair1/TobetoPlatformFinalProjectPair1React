@@ -22,6 +22,7 @@ import CoursePage from '../../pages/CoursePage/CoursePage';
 import MainCalendar from '../MainCalendar/MainCalendar';
 import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 import PersonalInformation from '../../pages/PersonalInformation/PersonalInformation';
+import PlatformCatalog from '../../pages/PlatformCatalog/PlatformCatalog';
 
 type Props = {};
 
@@ -71,6 +72,14 @@ const MainRoutes = (props: Props) => {
         element={
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        }
+      ></Route>
+      <Route
+        path='/platform-katalog'
+        element={
+          <ProtectedRoute>
+            <PlatformCatalog />
           </ProtectedRoute>
         }
       ></Route>

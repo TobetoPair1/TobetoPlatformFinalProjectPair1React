@@ -165,9 +165,9 @@ const NavBarLight = (props: Props) => {
           <li className='nav-item'>
             <Link
               className={
-                'nav-link ' + (path == '/katalog' ? 'nav-active' : 'c-gray-3')
+                'nav-link ' + (path == '/platform-katalog' ? 'nav-active' : 'c-gray-3')
               }
-              to='/katalog'
+              to='/platform-katalog'
             >
               Katalog
             </Link>
@@ -456,7 +456,7 @@ const NavBarLight = (props: Props) => {
                 <Link className='nav-link' to='/profilim'>
                   Profilim
                 </Link>
-                <Link className='nav-link' to='/katalog'>
+                <Link className='nav-link' to='/platform-katalog'>
                   Katalog
                 </Link>
                 <Link className='nav-link' to='/takvim'>

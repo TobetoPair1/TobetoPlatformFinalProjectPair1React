@@ -6,6 +6,30 @@ const Competencies = (props: Props) => {
         <div className='col-12 mb-6'>
           <label className='input-label-text'>Yetkinlik</label>
           <div className=' css-b62m3t-container'>
+            <select name='competencies' className='form-select' aria-label='Yetkinlikleriniz için'>
+              <option value=''>Seçiniz*</option>
+              <option value='C#'>C#</option>
+              <option value='SQL'>SQL</option>
+              <option value='Muhasebe'>Muhasebe</option>
+              <option value='JavaScript'>JavaScript</option>
+              <option value='Aktif Öğrenme'>Aktif Öğrenme</option>
+              <option value='Aktif Dinleme'>Aktif Dinleme</option>
+              <option value='Uyum Sağlama'>Uyum Sağlama</option>
+              <option value='Yönetim ve İdare'>Yönetim ve İdare</option>
+              <option value='Reklam'>Reklam</option>
+              <option value='Algoritmalar'>Algoritmalar</option>
+              <option value='Android(İşletim Sistemi)'>Android(İşletim Sistemi)</option>
+              <option value='Apachi'>Apachi</option>
+              <option value='Uygulama Mağazası(IOS)'>Uygulama Mağazası(IOS)</option>
+              <option value='Apple Sağlık Kiti'>Apple Sağlık Kiti</option>
+              <option value='Uygulamalı Makina Öğrenimi'>Uygulamalı Makina Öğrenimi</option>
+              <option value='Backend (Yazılım Mühendisliği)'>Backend (Yazılım Mühendisliği)</option>
+              <option value='Büyük Veri'>Büyük Veri</option>
+              <option value='Bootstrap(Front-End Framework)'>Bootstrap(Front-End Framework)</option>
+              <option value='İletişim'>İletişim</option>
+              <option value='Pazarlama'>Pazarlama</option>
+              <option value='Building and Construction'>Building and Construction</option>
+            </select>
             <span
               id='react-select-4-live-region'
               className='css-7pg0cj-a11yText'

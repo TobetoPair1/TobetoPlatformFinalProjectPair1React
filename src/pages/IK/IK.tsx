@@ -1,3 +1,4 @@
+import RegisterForm from '../../Components/RegisterForm/RegisterForm';
 import './IK.css';
 import { Link } from 'react-router-dom';
 
@@ -45,10 +46,11 @@ const IK = () => {
           </div>
         </div>
         <div className="col-md-6 col-12 bg-lightgray " id="kayitFormu">
-          <form data-hs-cf-bound="true">
+          {/* <form data-hs-cf-bound="true">
             <h3 className="mt-6 mb-8" style={{fontWeight:'bold', fontSize:'38px'}}>Hemen Kayıt Ol</h3><input name="firstName" className="form-control mt-6" type="text" placeholder="Ad*" /><input name="lastName" className="form-control mt-6" type="text" placeholder="Soyad*" /><input name="email" className="form-control mt-6" type="email" placeholder="E-Posta*" /><input name="password" className="form-control mt-6" type="password" placeholder="Şifre*" /><input name="passwordAgain" className="form-control mt-6" type="password" placeholder="Şifre Tekrar*" />
-          </form><button disabled className="btn btn-primary w-100 mt-6"  style={{fontWeight:'bold', fontSize:'18px', backgroundColor:'#A628FF', color:'#fff', borderRadius:'38px', border:'none', minWidth: '200px', lineHeight: '16px'}}>Kayıt Ol</button>
-          <div className="col-12 mt-6"><label><small>Zaten bir hesabın var mı?<a className="text-decoration-none text-muted fw-bold" href="/giris"> Giriş Yap</a></small></label></div>
+          </form><button disabled className="btn btn-primary w-100 mt-6"  style={{fontWeight:'bold', fontSize:'18px', backgroundColor:'#A628FF', color:'#fff', borderRadius:'38px', border:'none', minWidth: '200px', lineHeight: '16px'}}>Kayıt Ol</button> */}
+          <RegisterForm/>
+          <div className="col-12 mt-6"><label><small>Zaten bir hesabın var mı?<Link className="text-decoration-none text-muted fw-bold" to="/giris"> Giriş Yap</Link></small></label></div>
         </div>
       </div>
       <div className="row bg-lightgreen ">

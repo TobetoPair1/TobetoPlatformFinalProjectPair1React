@@ -49,7 +49,7 @@ async function CheckTokenDate() {
 
   return (
     <>
-      {path != '/istanbul-kodluyor' && path != '/kurs' && path != '/istanbul-kodluyor/galeri' ? (
+      {path != '/istanbul-kodluyor' && path != '/kurs' && path != '/istanbul-kodluyor/galeri' && path != '/yasal-metinler/kvkk-aydinlatma-metni' ? (
         path == '/' ||
         path == '/hakkimizda' ||
         path == '/katalog' ||
@@ -61,7 +61,8 @@ async function CheckTokenDate() {
         path == '/kurumlar-icin' ||
         path == '/blog' ||
         path == '/anasayfa-takvim' ||
-        path == '/sifre-yenile' ? (
+        path == '/sifre-yenile' ||
+        path == '/iletisim' ? (
           <>
             <Banner />
             <NavbarDark />
@@ -82,7 +83,8 @@ async function CheckTokenDate() {
       path == '/kurumlar-icin' ||
       path == '/blog' ||
       path == '/anasayfa-takvim' ||
-      path == '/sifre-yenile' ? (
+      path == '/sifre-yenile' ||
+      path == '/iletisim' ? (
         <DarkRoute />
       ) : (
         <LightRoute />

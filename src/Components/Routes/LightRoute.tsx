@@ -11,7 +11,7 @@ const LightRoute = (props: Props) => {
       style={{ width: "100%", height: "0.5rem", overflow: "visible" }}
     >
       <MainRoutes />
-      {path != '/istanbul-kodluyor' && path != '/kurs' && path != '/istanbul-kodluyor/galeri' ? <FooterPlatform /> : null}
+      {path != '/istanbul-kodluyor' && path != '/kurs' && path != '/istanbul-kodluyor/galeri' && path != '/yasal-metinler/kvkk-aydinlatma-metni' ? <FooterPlatform /> : null}
     </div>
   );
 };

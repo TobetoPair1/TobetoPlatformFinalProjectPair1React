@@ -23,6 +23,8 @@ import MainCalendar from '../MainCalendar/MainCalendar';
 import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 import PersonalInformation from '../../pages/PersonalInformation/PersonalInformation';
 import PlatformCatalog from '../../pages/PlatformCatalog/PlatformCatalog';
+import ContactPage from '../../pages/Contact/ContactPage';
+import Kvkk from '../../pages/Kvkk/Kvkk';
 
 type Props = {};
 
@@ -119,7 +121,8 @@ const MainRoutes = (props: Props) => {
       {protectedRouteWithPersonalInfo('medya-hesaplarim')}
       {protectedRouteWithPersonalInfo('yabanci-dil')}
       {protectedRouteWithPersonalInfo('ayarlar')}
-
+      <Route path="/iletisim" element={<ContactPage/>}></Route>
+      <Route path="/yasal-metinler/kvkk-aydinlatma-metni" element={<Kvkk/>}></Route> 
       <Route path='*' element={<NotFound />}></Route>
     </Routes>
   );

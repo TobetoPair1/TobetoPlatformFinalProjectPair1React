@@ -663,9 +663,9 @@ input[type='number'] {
 .PhoneInputInput {
   border-radius: 8px !important;
   border: 1px solid #b3a6c0 !important;
-  position: relative;
-  align-items: center;
-  padding: 0.75em;
+  position: relative !important;
+  align-items: center !important;
+  padding: 0.75em !important;
 }
 div[role='dialog'][aria-modal='true']:last-child {
   z-index: 1125;
@@ -1107,45 +1107,45 @@ a.uppy-Dashboard-poweredBy {
 }
 /*! CSS Used from: Embedded */
 .PhoneInput {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
 }
 .PhoneInputInput {
-  flex: 1 1;
-  min-width: 0;
+  flex: 1 1 !important;
+  min-width: 0 !important;
 }
 .PhoneInputCountryIcon {
   width: calc(
     var(--PhoneInputCountryFlag-height) *
       var(--PhoneInputCountryFlag-aspectRatio)
-  );
-  height: var(--PhoneInputCountryFlag-height);
+  ) !important;
+  height: var(--PhoneInputCountryFlag-height) !important;
 }
 .PhoneInputCountryIcon--border {
-  background-color: var(--PhoneInputCountryFlag-backgroundColor--loading);
+  background-color: var(--PhoneInputCountryFlag-backgroundColor--loading) !important;
   box-shadow: 0 0 0 var(--PhoneInputCountryFlag-borderWidth)
       var(--PhoneInputCountryFlag-borderColor),
     inset 0 0 0 var(--PhoneInputCountryFlag-borderWidth)
-      var(--PhoneInputCountryFlag-borderColor);
+      var(--PhoneInputCountryFlag-borderColor) !important;
 }
 .PhoneInputCountryIconImg {
-  display: block;
-  width: 10%;
-  height: 50%;
+  display: block !important;
+  width: 10% !important;
+  height: 50% !important;
 }
 .PhoneInputCountry {
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  margin-right: 5px;
+  position: relative !important;
+  align-self: stretch !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-right: -50% !important;
 }
 .PhoneInputCountrySelect {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   height: 100% !important;
-  width: 100% !important;
+  width: 10% !important;
   z-index: 1 !important;
   border: 0 !important;
   opacity: 0 !important;
